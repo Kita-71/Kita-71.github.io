@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Kita">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/2023/01/01/crackme1/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="一个简单的CrackMe程序，用nop对它下手会有奇怪的现象。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个简单的Crack Me背后的重定位问题">
+<meta property="og:url" content="http://example.com/2023/01/01/crackme1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一个简单的CrackMe程序，用nop对它下手会有奇怪的现象。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/tKGoms3aULkZrPV.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/5jyGlPkKmapbxOY.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/7luvkJSW8I6FKbj.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/7ocIfTG3LtFaeq6.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/TdV3IcW9Pfy5ORF.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/WmCO8bScAToJgHz.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/ma1EN2s5gjXn6YW.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/xO5LConADWFRdwz.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/E96WfTw7ZIVzLor.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/JBcwTiuZCH3DRa4.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/qufgQJkAsUHz7nb.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/nv9j2c1DLxSNrys.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/ldLKcQ5Tge6bhBv.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/ygoxPjOVUsZ1KzQ.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/Jdr5nICyO87UfvY.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/pEO2NVmdCHkovZ7.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/avOyCuHptZLRbDV.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/yMaf7kgTVu2rA4h.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/YVaZCyg48SrotsK.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/FcZv7BliVj5tQNe.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/mYuiJSokfdyPzAq.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/ziyBvfEXAY9SWRV.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/GzAycTJ3rIqfvuN.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/5JZscQPdLgIxk6V.png">
+<meta property="og:image" content="https://s2.loli.net/2023/01/01/gqdushmFPTitno8.png">
+<meta property="article:published_time" content="2023-01-01T02:59:32.000Z">
+<meta property="article:modified_time" content="2023-01-01T03:16:30.684Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Complie">
+<meta property="article:tag" content="OS">
+<meta property="article:tag" content="Software">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/01/01/tKGoms3aULkZrPV.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/cat.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/cat.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/cat.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            一个简单的Crack Me背后的重定位问题 -
+        
+        Limitless Progress
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        Limitless Progress
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+    <!--- Inject Part-->
+    
+    <script id="hexo-configurations">
+    window.config = {"hostname":"example.com","root":"/","language":"en","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left"},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Limitless Progress","subtitle":{"text":["Do not go gentle into that good night","Kita"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":"enable","links":{"github":"https://github.com/Kita-71","instagram":null,"zhihu":null,"twitter":null,"email":"842935300@qq.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.0","navbar":{"auto_hide":false,"color":{"left":"#D16BA5","right":"#5FFBF1","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Me":{"path":"/me","icon":"fa-solid fa-address-card","submenus":{"CV":"/about","PROJECT":"/project"}},"LIFE":{"icon":"fa-solid fa-address-card","submenus":{"Love":"/love"}},"Friends":{"path":"/links","icon":"fa-solid fa-user-group"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2023/12/26 00:00:00"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container">
+
+    <div class="navbar-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/cat.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                Limitless Progress
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    ARCHIVES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-solid fa-address-card fa-fw"></i>
+                                    ME
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/about">
+                                                    CV
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/project">
+                                                    PROJECT
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-solid fa-address-card fa-fw"></i>
+                                    LIFE
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/love">
+                                                    LOVE
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/links"
+                                        >
+                                    <i class="fa-solid fa-user-group fa-fw"></i>
+                                    FRIENDS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                ARCHIVES
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-Me"
+                        >
+                            <span>
+                                ME
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-Me">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/about">CV</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/project">PROJECT</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-LIFE"
+                        >
+                            <span>
+                                LIFE
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-LIFE">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/love">LOVE</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/links"
+                        >
+                            <span>
+                                FRIENDS
+                            </span>
+                            
+                                <i class="fa-solid fa-user-group fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">一个简单的Crack Me背后的重定位问题</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Kita</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2023-01-01 10:59:32</span>
+        <span class="mobile">2023-01-01 10:59:32</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2023-01-01 11:16:30</span>
+            <span class="mobile">2023-01-01 11:16:30</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E7%B4%AB%E8%BE%B0%E5%B7%A5%E7%A8%8B%E7%BB%84/">紫辰工程组</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Complie/">Complie</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/OS/">OS</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Software/">Software</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <blockquote>
+<p>一个简单的CrackMe程序，用nop对它下手会有奇怪的现象。</p>
+</blockquote>
+<span id="more"></span>
+<ul>
+<li>问题描述<br>   现有CrackMe程序代码:  <div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// crackme.cpp </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">	<span class="type">char</span> answer[<span class="number">10</span>] = <span class="string">&quot;123456789&quot;</span>;</span><br><span class="line">	<span class="type">char</span> input[<span class="number">10</span>];</span><br><span class="line">	<span class="built_in">scanf_s</span>(<span class="string">&quot;%s&quot;</span>, input, <span class="number">10</span>);</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">strncmp</span>(answer, input, <span class="number">10</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Wrong Answer!&quot;</span>);</span><br><span class="line">		<span class="built_in">system</span>(<span class="string">&quot;Pause&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Congratulation!!!!!&quot;</span>);</span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;Pause&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+  对于其生成的程序crackme.exe,若要绕过其中的密码校验，使其输出Congratulation!!!!!，我们有以下三种方案:<ol>
+<li>修改je为jne<br> 程序使用je指令跳转到输出“Congratulation!!!!!”处。那么我们可以直接把je改成jne，这样输错的时候就能跳转到输出“Congratulation!!!!!”处了。</li>
+<li>修改je为jmp<br> 这样的方式更加直接，无论怎样都能跳转到输出“Congratulation!!!!!”处了。 3. 使用nop覆盖整个判断逻辑</li>
+<li>使用nop整个覆盖错误输出逻辑。<br> 这样做会导致程序运行得到奇怪的现象——有时会报内存访问非法，有时却什么都不会发生，这和我们修改的逻辑不符。<br>现对CrackMe程序进行上述三种方案的实验验证，并对第三个方案中出现的问题进行分析和解决。</li>
+</ol>
+</li>
+<li>实验环境<ul>
+<li>VS 2022,IDA PRO 7.7.7 </li>
+</ul>
+</li>
+</ul>
+<h1 id="一、je修改为jne-jz修改为jnz"><a href="#一、je修改为jne-jz修改为jnz" class="headerlink" title="一、je修改为jne/jz修改为jnz"></a>一、je修改为jne/jz修改为jnz</h1><p>由于je、jne和jz、jnz所作的操作基本相同，故根据实际情况进行修改。</p>
+<h2 id="1-实验过程"><a href="#1-实验过程" class="headerlink" title="1. 实验过程"></a>1. 实验过程</h2><p>对于原程序，我们可以看到，程序对输入字符串和answer进行比较后，使用jz进行跳转，若输入的字符串和answer一致，则跳转到地址为0x500010E5的指令，输出Congratulation!!!!!。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/tKGoms3aULkZrPV.png"
+                      alt="image.png"
+                ></p>
+<p>我们使用ida的patch功能进行修改，将jz修改为jnz，即将0x74改为0x75<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/5jyGlPkKmapbxOY.png"
+                      alt="image.png"
+                ><br>程序中的jz已修改为jnz<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/7luvkJSW8I6FKbj.png"
+                      alt="image.png"
+                ></p>
+<h2 id="2-实验结果"><a href="#2-实验结果" class="headerlink" title="2. 实验结果"></a>2. 实验结果</h2><p>将上述修改应用到新的exe后，运行结果如下：</p>
+<ul>
+<li>输入与答案“123456789”不符的字符串后，显示Congratulation。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/7ocIfTG3LtFaeq6.png"
+                      alt="image.png"
+                ></li>
+<li>输入与答案相符的字符串后，显示Wrong<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/TdV3IcW9Pfy5ORF.png"
+                      alt="image.png"
+                ></li>
+</ul>
+<h1 id="二、je-jz修改为jmp"><a href="#二、je-jz修改为jmp" class="headerlink" title="二、je/jz修改为jmp"></a>二、je/jz修改为jmp</h1><h2 id="1-实验过程-1"><a href="#1-实验过程-1" class="headerlink" title="1. 实验过程"></a>1. 实验过程</h2><p>与方案一的修改过程一样，我们使用ida的patch将jz修改为jmp，即将0x74修改为0xEB，修改后程序的反汇编如下所示，比较后使用jmp直接跳转到地址0x500010E5处，输出Congratulation!!!!!。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/WmCO8bScAToJgHz.png"
+                      alt="image.png"
+                ></p>
+<h2 id="2-实验结果-1"><a href="#2-实验结果-1" class="headerlink" title="2.实验结果"></a>2.实验结果</h2><p>无论输入的值是否正确，都显示Congratulation!!!!!。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/ma1EN2s5gjXn6YW.png"
+                      alt="image.png"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/xO5LConADWFRdwz.png"
+                      alt="image.png"
+                ></p>
+<h1 id="三、nop"><a href="#三、nop" class="headerlink" title="三、nop"></a>三、nop</h1><h2 id="1-程序修改"><a href="#1-程序修改" class="headerlink" title="1. 程序修改"></a>1. 程序修改</h2><p>使用ida将处于判断字符串和输出”Congratulation!!!!!“之间的指令nop掉。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/E96WfTw7ZIVzLor.png"
+                      alt="image.png"
+                ></p>
+<h2 id="2-运行结果"><a href="#2-运行结果" class="headerlink" title="2. 运行结果"></a>2. 运行结果</h2><p>程序无法正常运行<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/JBcwTiuZCH3DRa4.png"
+                      alt="image.png"
+                ></p>
+<h2 id="3-异常分析"><a href="#3-异常分析" class="headerlink" title="3. 异常分析"></a>3. 异常分析</h2><h3 id="3-1-异常原因猜想"><a href="#3-1-异常原因猜想" class="headerlink" title="3.1 异常原因猜想"></a>3.1 异常原因猜想</h3><p>由上述结果可见，nop后得到的程序并不能正常运行。从ida的静态分析来看，程序本应在进入0x500010DC后，一直运行nop指令直到0x500010E4,而后输出”Congratulation”，但事实并非如此。因此，只有一种可能——程序在装载后被修改，其中的nop指令变成了其他指令，导致了程序的异常。</p>
+<h3 id="3-2-上述猜想的验证"><a href="#3-2-上述猜想的验证" class="headerlink" title="3.2 上述猜想的验证"></a>3.2 上述猜想的验证</h3><p>使用x32dbg对程序进行动态分析，观察其在内存中的情况：</p>
+<ol>
+<li>打开内存布局查看程序装载基址<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/qufgQJkAsUHz7nb.png"
+                      alt="image.png"
+                ></li>
+<li>查看IDA中的基址<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/nv9j2c1DLxSNrys.png"
+                      alt="image.png"
+                ></li>
+<li>使用基址+偏移找到nop指令在内存中的地址<br> 基址0x4F6A0000+偏移（0x500010DC-0x50000000）=0x4F6A10DC</li>
+<li>可以看到，原程序中两个nop指令被修改为其他值，其值意义不明。但能够确定的是，程序中这部分的内容在装载后的确被修改了。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/ldLKcQ5Tge6bhBv.png"
+                      alt="image.png"
+                ></li>
+</ol>
+<h3 id="3-3-进一步的分析"><a href="#3-3-进一步的分析" class="headerlink" title="3.3 进一步的分析"></a>3.3 进一步的分析</h3><p>为了分析程序中这两个字节为什么被修改，我们在未进行nop修改的原程序中找到未修改的两个字节的地址的内容，观察被修改字节原来的值。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/ygoxPjOVUsZ1KzQ.png"
+                      alt="image.png"
+                ><br>我们发现，这两个字节所处位置为push指令的内部，根据push指令的机器码，得知0x68为操作码，0x20、0x21、0x00、0x50为地址0x50002120的小端表示，而0x50002120正是字符串”Wrong Answer !”的地址。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/Jdr5nICyO87UfvY.png"
+                      alt="image.png"
+                ><br>而在装载后程序中的0x00和0x50所处位置的内容被修改为0xFA和0x8F，因此我们猜想，“Wrong Answer”字符串地址的重定位导致了这两个字节的修改，而0x8F和0xFA肯定和重定位的内容有一定的联系。<br>我们首先查看了0x8FFA2120地址，发现其并不存在。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/pEO2NVmdCHkovZ7.png"
+                      alt="image.png"
+                ><br>而后，根据对重定位的理解，程序的基址由0x50000000变为了0x4F6A0000,那么0x8F和0xFA的出现一定与基址的变化有关。通过计算发现，0x50000x4F6A+0x8FFA=0x9090,结果与我们原来两个NOP指令的机器码一致。因此可以确定，两个0x90分别被修改为0x8F和0xFA是由于基址变化导致“Wrong Answer”地址的转变引发重定位导致的结果。</p>
+<h3 id="3-4-解决方法"><a href="#3-4-解决方法" class="headerlink" title="3.4 解决方法"></a>3.4 解决方法</h3><ol>
+<li>关闭随机基址<br> 为了进一步验证该现象源于重定位，我们关闭随机基址，设置固定基址为0x50000000。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/avOyCuHptZLRbDV.png"
+                      alt="image.png"
+                ><br> 再次在内存中查看，发现并没有NOP指令被修改，进而验证了上述结果，并解决了该问题。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/yMaf7kgTVu2rA4h.png"
+                      alt="image.png"
+                ><br> 程序得以正常运行：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/YVaZCyg48SrotsK.png"
+                      alt="image.png"
+                ></li>
+<li>修改重定位表<br> 由于该问题源于重定位表，而我们直到，程序装载的重定位操作会根据重定位表的表项修改对应地址的内容。因此可以通过修改重定位表从而解决这个问题的产生。<br> 首先，我们需要对重定位表有较为清晰的认识，其结构如下所示：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/FcZv7BliVj5tQNe.png"
+                      alt="image.png"
+                ><br> 由上图可以看到，重定位表项记录的偏移+重定位表中记录的VirtuaAddress=被重定位的内容在程序中的偏移。而表项中高四位的值记录数据是否会被修改，0表示不必修改，3表示需要修改。<ul>
+<li>使用010Editor的PE格式分析器查看重定位表<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/mYuiJSokfdyPzAq.png"
+                      alt="image.png"
+                ></li>
+<li>计算程序中被重定位的地址的偏移<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/ziyBvfEXAY9SWRV.png"
+                      alt="image.png"
+                ></li>
+<li>计算重定位表项中记录的偏移：Offset=0x10DF-0x1000=0xDF</li>
+<li>在表项中找到该项：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/GzAycTJ3rIqfvuN.png"
+                      alt="image.png"
+                ></li>
+<li>修改该项中高四位的值为0，使其作为不被修改的数据。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/5JZscQPdLgIxk6V.png"
+                      alt="image.png"
+                ></li>
+<li>将其应用为新的exe程序后运行，发现其正常运行。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/gqdushmFPTitno8.png"
+                      alt="image.png"
+                ></li>
+</ul>
+</li>
+</ol>
+<h1 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h1><p>对于crackme程序，使用nop的方法修改会由于程序的重定位引发程序运行异常，通过关闭随机基址或修改重定位表项的方法可以解决该问题。</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> 一个简单的Crack Me背后的重定位问题</li>
+        <li><strong>Author:</strong> Kita</li>
+        <li><strong>Created at
+                :</strong> 2023-01-01 10:59:32</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2023-01-01 11:16:30
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://redefine.ohevan.com/2023/01/01/crackme1/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Complie/">#Complie</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/OS/">#OS</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Software/">#Software</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2023/01/01/movquestion/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">反汇编中的奇怪现象分析</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2023/01/01/retx/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">关于RET X指令</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">一个简单的Crack Me背后的重定位问题</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81je%E4%BF%AE%E6%94%B9%E4%B8%BAjne-jz%E4%BF%AE%E6%94%B9%E4%B8%BAjnz"><span class="nav-text">一、je修改为jne&#x2F;jz修改为jnz</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B"><span class="nav-text">1. 实验过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="nav-text">2. 实验结果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81je-jz%E4%BF%AE%E6%94%B9%E4%B8%BAjmp"><span class="nav-text">二、je&#x2F;jz修改为jmp</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B-1"><span class="nav-text">1. 实验过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C-1"><span class="nav-text">2.实验结果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81nop"><span class="nav-text">三、nop</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%A8%8B%E5%BA%8F%E4%BF%AE%E6%94%B9"><span class="nav-text">1. 程序修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="nav-text">2. 运行结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%BC%82%E5%B8%B8%E5%88%86%E6%9E%90"><span class="nav-text">3. 异常分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%BC%82%E5%B8%B8%E5%8E%9F%E5%9B%A0%E7%8C%9C%E6%83%B3"><span class="nav-text">3.1 异常原因猜想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E4%B8%8A%E8%BF%B0%E7%8C%9C%E6%83%B3%E7%9A%84%E9%AA%8C%E8%AF%81"><span class="nav-text">3.2 上述猜想的验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E8%BF%9B%E4%B8%80%E6%AD%A5%E7%9A%84%E5%88%86%E6%9E%90"><span class="nav-text">3.3 进一步的分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-text">3.4 解决方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-text">四、总结</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2023</span>
+              -
+            
+            2023&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Kita</a>
+        </div>
+        
+            <script data-swup-reload-script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.0</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>

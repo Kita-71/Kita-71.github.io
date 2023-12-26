@@ -1,0 +1,818 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>一个简单的Crack Me背后的重定位问题</title>
+    <url>/2023/01/01/crackme1/</url>
+    <content><![CDATA[<blockquote>
+<p>一个简单的CrackMe程序，用nop对它下手会有奇怪的现象。</p>
+</blockquote>
+<span id="more"></span>
+<ul>
+<li>问题描述<br>   现有CrackMe程序代码:  <div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// crackme.cpp </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">	<span class="type">char</span> answer[<span class="number">10</span>] = <span class="string">&quot;123456789&quot;</span>;</span><br><span class="line">	<span class="type">char</span> input[<span class="number">10</span>];</span><br><span class="line">	<span class="built_in">scanf_s</span>(<span class="string">&quot;%s&quot;</span>, input, <span class="number">10</span>);</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">strncmp</span>(answer, input, <span class="number">10</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Wrong Answer!&quot;</span>);</span><br><span class="line">		<span class="built_in">system</span>(<span class="string">&quot;Pause&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Congratulation!!!!!&quot;</span>);</span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;Pause&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+  对于其生成的程序crackme.exe,若要绕过其中的密码校验，使其输出Congratulation!!!!!，我们有以下三种方案:<ol>
+<li>修改je为jne<br> 程序使用je指令跳转到输出“Congratulation!!!!!”处。那么我们可以直接把je改成jne，这样输错的时候就能跳转到输出“Congratulation!!!!!”处了。</li>
+<li>修改je为jmp<br> 这样的方式更加直接，无论怎样都能跳转到输出“Congratulation!!!!!”处了。 3. 使用nop覆盖整个判断逻辑</li>
+<li>使用nop整个覆盖错误输出逻辑。<br> 这样做会导致程序运行得到奇怪的现象——有时会报内存访问非法，有时却什么都不会发生，这和我们修改的逻辑不符。<br>现对CrackMe程序进行上述三种方案的实验验证，并对第三个方案中出现的问题进行分析和解决。</li>
+</ol>
+</li>
+<li>实验环境<ul>
+<li>VS 2022,IDA PRO 7.7.7 </li>
+</ul>
+</li>
+</ul>
+<h1 id="一、je修改为jne-jz修改为jnz"><a href="#一、je修改为jne-jz修改为jnz" class="headerlink" title="一、je修改为jne/jz修改为jnz"></a>一、je修改为jne/jz修改为jnz</h1><p>由于je、jne和jz、jnz所作的操作基本相同，故根据实际情况进行修改。</p>
+<h2 id="1-实验过程"><a href="#1-实验过程" class="headerlink" title="1. 实验过程"></a>1. 实验过程</h2><p>对于原程序，我们可以看到，程序对输入字符串和answer进行比较后，使用jz进行跳转，若输入的字符串和answer一致，则跳转到地址为0x500010E5的指令，输出Congratulation!!!!!。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/tKGoms3aULkZrPV.png"
+                      alt="image.png"
+                ></p>
+<p>我们使用ida的patch功能进行修改，将jz修改为jnz，即将0x74改为0x75<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/5jyGlPkKmapbxOY.png"
+                      alt="image.png"
+                ><br>程序中的jz已修改为jnz<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/7luvkJSW8I6FKbj.png"
+                      alt="image.png"
+                ></p>
+<h2 id="2-实验结果"><a href="#2-实验结果" class="headerlink" title="2. 实验结果"></a>2. 实验结果</h2><p>将上述修改应用到新的exe后，运行结果如下：</p>
+<ul>
+<li>输入与答案“123456789”不符的字符串后，显示Congratulation。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/7ocIfTG3LtFaeq6.png"
+                      alt="image.png"
+                ></li>
+<li>输入与答案相符的字符串后，显示Wrong<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/TdV3IcW9Pfy5ORF.png"
+                      alt="image.png"
+                ></li>
+</ul>
+<h1 id="二、je-jz修改为jmp"><a href="#二、je-jz修改为jmp" class="headerlink" title="二、je/jz修改为jmp"></a>二、je/jz修改为jmp</h1><h2 id="1-实验过程-1"><a href="#1-实验过程-1" class="headerlink" title="1. 实验过程"></a>1. 实验过程</h2><p>与方案一的修改过程一样，我们使用ida的patch将jz修改为jmp，即将0x74修改为0xEB，修改后程序的反汇编如下所示，比较后使用jmp直接跳转到地址0x500010E5处，输出Congratulation!!!!!。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/WmCO8bScAToJgHz.png"
+                      alt="image.png"
+                ></p>
+<h2 id="2-实验结果-1"><a href="#2-实验结果-1" class="headerlink" title="2.实验结果"></a>2.实验结果</h2><p>无论输入的值是否正确，都显示Congratulation!!!!!。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/ma1EN2s5gjXn6YW.png"
+                      alt="image.png"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/xO5LConADWFRdwz.png"
+                      alt="image.png"
+                ></p>
+<h1 id="三、nop"><a href="#三、nop" class="headerlink" title="三、nop"></a>三、nop</h1><h2 id="1-程序修改"><a href="#1-程序修改" class="headerlink" title="1. 程序修改"></a>1. 程序修改</h2><p>使用ida将处于判断字符串和输出”Congratulation!!!!!“之间的指令nop掉。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/E96WfTw7ZIVzLor.png"
+                      alt="image.png"
+                ></p>
+<h2 id="2-运行结果"><a href="#2-运行结果" class="headerlink" title="2. 运行结果"></a>2. 运行结果</h2><p>程序无法正常运行<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/JBcwTiuZCH3DRa4.png"
+                      alt="image.png"
+                ></p>
+<h2 id="3-异常分析"><a href="#3-异常分析" class="headerlink" title="3. 异常分析"></a>3. 异常分析</h2><h3 id="3-1-异常原因猜想"><a href="#3-1-异常原因猜想" class="headerlink" title="3.1 异常原因猜想"></a>3.1 异常原因猜想</h3><p>由上述结果可见，nop后得到的程序并不能正常运行。从ida的静态分析来看，程序本应在进入0x500010DC后，一直运行nop指令直到0x500010E4,而后输出”Congratulation”，但事实并非如此。因此，只有一种可能——程序在装载后被修改，其中的nop指令变成了其他指令，导致了程序的异常。</p>
+<h3 id="3-2-上述猜想的验证"><a href="#3-2-上述猜想的验证" class="headerlink" title="3.2 上述猜想的验证"></a>3.2 上述猜想的验证</h3><p>使用x32dbg对程序进行动态分析，观察其在内存中的情况：</p>
+<ol>
+<li>打开内存布局查看程序装载基址<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/qufgQJkAsUHz7nb.png"
+                      alt="image.png"
+                ></li>
+<li>查看IDA中的基址<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/nv9j2c1DLxSNrys.png"
+                      alt="image.png"
+                ></li>
+<li>使用基址+偏移找到nop指令在内存中的地址<br> 基址0x4F6A0000+偏移（0x500010DC-0x50000000）=0x4F6A10DC</li>
+<li>可以看到，原程序中两个nop指令被修改为其他值，其值意义不明。但能够确定的是，程序中这部分的内容在装载后的确被修改了。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/ldLKcQ5Tge6bhBv.png"
+                      alt="image.png"
+                ></li>
+</ol>
+<h3 id="3-3-进一步的分析"><a href="#3-3-进一步的分析" class="headerlink" title="3.3 进一步的分析"></a>3.3 进一步的分析</h3><p>为了分析程序中这两个字节为什么被修改，我们在未进行nop修改的原程序中找到未修改的两个字节的地址的内容，观察被修改字节原来的值。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/ygoxPjOVUsZ1KzQ.png"
+                      alt="image.png"
+                ><br>我们发现，这两个字节所处位置为push指令的内部，根据push指令的机器码，得知0x68为操作码，0x20、0x21、0x00、0x50为地址0x50002120的小端表示，而0x50002120正是字符串”Wrong Answer !”的地址。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/Jdr5nICyO87UfvY.png"
+                      alt="image.png"
+                ><br>而在装载后程序中的0x00和0x50所处位置的内容被修改为0xFA和0x8F，因此我们猜想，“Wrong Answer”字符串地址的重定位导致了这两个字节的修改，而0x8F和0xFA肯定和重定位的内容有一定的联系。<br>我们首先查看了0x8FFA2120地址，发现其并不存在。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/pEO2NVmdCHkovZ7.png"
+                      alt="image.png"
+                ><br>而后，根据对重定位的理解，程序的基址由0x50000000变为了0x4F6A0000,那么0x8F和0xFA的出现一定与基址的变化有关。通过计算发现，0x50000x4F6A+0x8FFA=0x9090,结果与我们原来两个NOP指令的机器码一致。因此可以确定，两个0x90分别被修改为0x8F和0xFA是由于基址变化导致“Wrong Answer”地址的转变引发重定位导致的结果。</p>
+<h3 id="3-4-解决方法"><a href="#3-4-解决方法" class="headerlink" title="3.4 解决方法"></a>3.4 解决方法</h3><ol>
+<li>关闭随机基址<br> 为了进一步验证该现象源于重定位，我们关闭随机基址，设置固定基址为0x50000000。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/avOyCuHptZLRbDV.png"
+                      alt="image.png"
+                ><br> 再次在内存中查看，发现并没有NOP指令被修改，进而验证了上述结果，并解决了该问题。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/yMaf7kgTVu2rA4h.png"
+                      alt="image.png"
+                ><br> 程序得以正常运行：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/YVaZCyg48SrotsK.png"
+                      alt="image.png"
+                ></li>
+<li>修改重定位表<br> 由于该问题源于重定位表，而我们直到，程序装载的重定位操作会根据重定位表的表项修改对应地址的内容。因此可以通过修改重定位表从而解决这个问题的产生。<br> 首先，我们需要对重定位表有较为清晰的认识，其结构如下所示：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/FcZv7BliVj5tQNe.png"
+                      alt="image.png"
+                ><br> 由上图可以看到，重定位表项记录的偏移+重定位表中记录的VirtuaAddress=被重定位的内容在程序中的偏移。而表项中高四位的值记录数据是否会被修改，0表示不必修改，3表示需要修改。<ul>
+<li>使用010Editor的PE格式分析器查看重定位表<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/mYuiJSokfdyPzAq.png"
+                      alt="image.png"
+                ></li>
+<li>计算程序中被重定位的地址的偏移<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/ziyBvfEXAY9SWRV.png"
+                      alt="image.png"
+                ></li>
+<li>计算重定位表项中记录的偏移：Offset=0x10DF-0x1000=0xDF</li>
+<li>在表项中找到该项：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/GzAycTJ3rIqfvuN.png"
+                      alt="image.png"
+                ></li>
+<li>修改该项中高四位的值为0，使其作为不被修改的数据。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/5JZscQPdLgIxk6V.png"
+                      alt="image.png"
+                ></li>
+<li>将其应用为新的exe程序后运行，发现其正常运行。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/gqdushmFPTitno8.png"
+                      alt="image.png"
+                ></li>
+</ul>
+</li>
+</ol>
+<h1 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h1><p>对于crackme程序，使用nop的方法修改会由于程序的重定位引发程序运行异常，通过关闭随机基址或修改重定位表项的方法可以解决该问题。</p>
+]]></content>
+      <categories>
+        <category>紫辰工程组</category>
+      </categories>
+      <tags>
+        <tag>Complie</tag>
+        <tag>OS</tag>
+        <tag>Software</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Piano</title>
+    <url>/2023/12/26/Piano/</url>
+    <content><![CDATA[<blockquote>
+<p>Piano课的一些笔记</p>
+</blockquote>
+<span id="more"></span>
+<h1 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h1><h2 id="1-1-谱表"><a href="#1-1-谱表" class="headerlink" title="1.1 谱表"></a>1.1 谱表</h2><ul>
+<li>谱线<br>  <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/04/27/3fUbVIGnQosuj4A.png"
+                      alt="Untitled.png"
+                ></li>
+<li>高音谱号和低音谱号<br>  <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/04/27/DrpijWozsCfU5ag.png"
+                      alt="Untitled 1.png"
+                ></li>
+<li>对照图<br>  <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/04/27/AL2Q4HVdDaT5Ozs.jpg"
+                      alt="_8LIZN8VPC_238SZRQ7P.jpg"
+                ><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/04/27/mVotOJRPjhFewbk.png"
+                      alt="1.png"
+                ><br>  <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/04/27/aWrLx7OMIfTkbyV.jpg"
+                      alt="F30V(EJUTDS8IPHYR2DXG.jpg"
+                ></li>
+</ul>
+<h2 id="1-2-拍号"><a href="#1-2-拍号" class="headerlink" title="1.2 拍号"></a>1.2 拍号</h2><p>$3/4$ ：以四分音符为一拍，每小节三拍</p>
+<h2 id="1-3-音符"><a href="#1-3-音符" class="headerlink" title="1.3 音符"></a>1.3 音符</h2><p>符头、符杠、符尾<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/04/27/up7oywlgdH6naFT.png"
+                      alt="Untitled 2.png"
+                ></p>
+<h2 id="1-4-休止符"><a href="#1-4-休止符" class="headerlink" title="1.4 休止符"></a>1.4 休止符</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/04/27/et7Sp8osk2WnTIP.png"
+                      alt="Untitled 3.png"
+                ></p>
+<h2 id="1-5-坐姿和手型"><a href="#1-5-坐姿和手型" class="headerlink" title="1.5 坐姿和手型"></a>1.5 坐姿和手型</h2><ul>
+<li>  坐在琴凳的前半部分</li>
+<li>  小臂与键盘持平</li>
+<li>  大臂与小臂形成略大于90度</li>
+<li>  关节不能塌陷</li>
+</ul>
+<h1 id="二、断音弹奏法"><a href="#二、断音弹奏法" class="headerlink" title="二、断音弹奏法"></a>二、断音弹奏法</h1><ul>
+<li>  每个音断开弹奏</li>
+<li>  跳音、顿音</li>
+<li>  非连音断奏</li>
+<li>  提、落</li>
+</ul>
+<h1 id="三、连音奏法"><a href="#三、连音奏法" class="headerlink" title="三、连音奏法"></a>三、连音奏法</h1><p> 拜尔练习曲<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/04/27/p8UrfGEIg3ls9yN.png"
+                      alt="image.png"
+                ></p>
+<h1 id="四、和弦"><a href="#四、和弦" class="headerlink" title="四、和弦"></a>四、和弦</h1><ul>
+<li>  我和你<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/04/27/BjNm6SLHvxYGnak.png"
+                      alt="image.png"
+                ></li>
+</ul>
+]]></content>
+      <categories>
+        <category>轻松愉快</category>
+      </categories>
+      <tags>
+        <tag>修心养性</tag>
+        <tag>欣赏音乐</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>反汇编中的奇怪现象分析</title>
+    <url>/2023/01/01/movquestion/</url>
+    <content><![CDATA[<blockquote>
+<p>在内存中修改mov指令后不同反汇编器的反应</p>
+</blockquote>
+<span id="more"></span>
+<ul>
+<li>问题描述<br>  在Microsoft Visual C++，修改指令int gi = 0x0c所对应的内存空间中，第三个字节时，对应的反汇编指令mov dword ptr [地址], 0Ch没有改变。</li>
+</ul>
+<h1 id="一、资料查询"><a href="#一、资料查询" class="headerlink" title="一、资料查询"></a>一、资料查询</h1><ol>
+<li>对应的mov指令的opcode解析<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/10/18/b1zOPRWla9jhXfc.png"
+                     
+                ></li>
+<li>该指令二个字节的含义——用于规定操作数的寻址模式<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/10/18/8j4bzIMRNdevapT.png"
+                     
+                ></li>
+<li>ModRM寻址模式<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/10/18/KyhbDo973PZCUFM.png"
+                     
+                ></li>
+<li>7-6位<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/10/18/FVxEeAHXfJy5Gdr.png"
+                     
+                ></li>
+<li>5-3位 ，当7-6位为11时，这三位生效。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/10/18/lFyMvNqIeVbfZ1J.png"
+                     
+                ></li>
+<li>2-0位，寻址方式与字节首两位有关。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/10/18/x6E4qHMSmAwycpb.png"
+                     
+                ></li>
+</ol>
+<h1 id="二、猜测"><a href="#二、猜测" class="headerlink" title="二、猜测"></a>二、猜测</h1><p>第二个字节用于规定指令中操作数的寻址方式。而以C7为首字节的MOV指令采用的是Memory寻址，与Register无关。故VC6.0反汇编器在反汇编时，直接忽视了第二个字节的中间三位。因此猜想，如果在VC6.0中将C7 05改成C7 45，结果将会发生变化，原因是这样做会导致指令第二个字节的前两位发生变化。</p>
+<h1 id="三、实验"><a href="#三、实验" class="headerlink" title="三、实验"></a>三、实验</h1><h2 id="1-VC6-0下的结果"><a href="#1-VC6-0下的结果" class="headerlink" title="1. VC6.0下的结果"></a>1. VC6.0下的结果</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/10/18/limIXS5ATaqcQBM.png"
+                     
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/10/18/cjBZ8xKqYo9OlbU.png"
+                     
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/10/18/3jugKcQf1BoHVDp.png"
+                     
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/10/18/uXROyjfDcvZeFiG.png"
+                     
+                ><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/10/18/udX9oVsrEWn7hjM.png"
+                     
+                ></p>
+<h2 id="2-VS2022下的结果"><a href="#2-VS2022下的结果" class="headerlink" title="2. VS2022下的结果"></a>2. VS2022下的结果</h2><p>修改为C7 15后反汇编结果直接发生变化<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2022/10/18/pr9XOlaA61LHzqS.png"
+                     
+                ></p>
+<h1 id="附：参考文献"><a href="#附：参考文献" class="headerlink" title="附：参考文献"></a>附：参考文献</h1><ol>
+<li>Intel 80x86: <a class="link"   href="http://www.mathemainzel.info/files/x86asmref.html" >http://www.mathemainzel.info/files/x86asmref.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>紫辰工程组</category>
+      </categories>
+      <tags>
+        <tag>Complie</tag>
+        <tag>OS</tag>
+        <tag>Software</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于RET X指令</title>
+    <url>/2023/01/01/retx/</url>
+    <content><![CDATA[<blockquote>
+<p>分析不同编译器下的ret x指令</p>
+</blockquote>
+<span id="more"></span>
+<ul>
+<li>问题描述<ul>
+<li>分析ret x的指令格式，设计实验证明清栈上限，并分析超过上限时不同编译器（如v6，vs，gcc）的处理方法。</li>
+</ul>
+</li>
+<li>实验环境<ul>
+<li>VS 2022, VC6.0，IDA PRO 7.7.7, gcc 11.2.0</li>
+</ul>
+</li>
+</ul>
+<h1 id="一、ret-x指令格式分析"><a href="#一、ret-x指令格式分析" class="headerlink" title="一、ret x指令格式分析"></a>一、ret x指令格式分析</h1><h2 id="1-猜想"><a href="#1-猜想" class="headerlink" title="1 猜想"></a>1 猜想</h2><ul>
+<li>retx指令将对传入参数占用的栈空间进行清楚的操作交由被调用者执行，因此只需要告知x的值（即需要清理的栈空间的大小），指令便能正常运作。因此猜测指令的格式为操作码op+源操作数x。</li>
+</ul>
+<h2 id="2-设计实验"><a href="#2-设计实验" class="headerlink" title="2 设计实验"></a>2 设计实验</h2><ol>
+<li><p> 在C语言中，调用函数时对于不同传入参数的处理方式各不相同，对于结构体的传入采用参数拷贝的处理方式，而对于数组的传入则以传入指针的方式处理。因此，使用结构体作为参数传入，而结构体内部使用数组控制结构体的大小，以控制传入参数占用的栈空间大小，从而控制retx指令的清栈大小。在实际实验操作中，我们声明了一个结构体，其成员为一个char类型的数组。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/PXRWNKiyJQ3Vheg.png"
+                      alt="image.png"
+                ></p>
+</li>
+<li><p> 接下来，定义以test结构体为类型的全局变量a，以避免main中局部变量过大导致栈空间不足。</p>
+</li>
+<li><p> 声明并定义函数function，传入的参数为test类型结构体，并添加__stdcall以采用被调用者清栈的函数调用约定，并对变量a进行相关操作以避免编译优化。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/OvZgsmbt2pKoQYy.png"
+                      alt="image.png"
+                ></p>
+</li>
+<li><p>在main函数中初始化变量a，并作为参数传入函数function。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/AtsjgdOpCnWBVq9.png"
+                      alt="image.png"
+                ></p>
+</li>
+</ol>
+<h2 id="3-实验验证"><a href="#3-实验验证" class="headerlink" title="3 实验验证"></a>3 实验验证</h2><ol>
+<li>在function的return处下断点，观察其反汇编代码。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/BseUh8InL1YflW5.png"
+                      alt="image.png"
+                ></li>
+<li>发现其使用了retx指令，在指令中第二、三字节的内容与结构体的大小值的小端表示相匹配，因此可以认为这两个字节的值即为retx的x。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/z5yhdOgFsKc7Ze2.png"
+                      alt="image.png"
+                ></li>
+<li>将数组的大小改为0x5678字节，发生变换的值仍是后两个字节，内容仍和结构体大小值的小端表示一致。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/hANXmZtg8JTkPHY.png"
+                      alt="image.png"
+                ></li>
+</ol>
+<ul>
+<li>至此可以认为，retx的指令由操作码+源操作数组成，操作码为C2，源操作数x为第二、三字节。</li>
+</ul>
+<h1 id="二、清栈上限及不同编译器的处理方案"><a href="#二、清栈上限及不同编译器的处理方案" class="headerlink" title="二、清栈上限及不同编译器的处理方案"></a>二、清栈上限及不同编译器的处理方案</h1><h2 id="1-猜想-1"><a href="#1-猜想-1" class="headerlink" title="1 猜想"></a>1 猜想</h2><p>由retx指令格式可以作出猜测，x只能由大小为两个字节的无符号整数表示，因此猜测若该函数传入的参数占用栈空间的大小超过0xFFFF，retx指令将不能使用。同时，如果超过了该指令的清栈上限，不同编译器也许会作不同处理，接下来通过实验考究不同编译器的处理方案。</p>
+<h2 id="2-设计实验-1"><a href="#2-设计实验-1" class="headerlink" title="2 设计实验"></a>2 设计实验</h2><ul>
+<li>使用上述代码进行实验。</li>
+<li>通过修改结构体内char数组的大小，控制清栈大小。</li>
+<li>使用不同编译器进行编译，比较超出上限和未超出上限的反汇编代码，找到清栈上限，并比较不同编译器的处理方案。</li>
+</ul>
+<h2 id="3-实验验证-1"><a href="#3-实验验证-1" class="headerlink" title="3 实验验证"></a>3 实验验证</h2><h3 id="3-1-寻找清栈上限"><a href="#3-1-寻找清栈上限" class="headerlink" title="3.1 寻找清栈上限"></a>3.1 寻找清栈上限</h3><ol>
+<li><p>VC6.0</p>
+<ul>
+<li><p>清栈大小设置为0XFFFF，不能使用retx进行清栈。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/aQwoLTd3VOkuU5C.png"
+                      alt="image.png"
+                ></p>
+</li>
+<li><p>将清栈大小逐步减少，直到修改为0xFFFC，才能够使用retx指令清栈。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/fl7OKwX8MQxgJtH.png"
+                      alt="image.png"
+                ></p>
+</li>
+</ul>
+</li>
+<li><p>VS 2022</p>
+<ul>
+<li>使用VS2022与VC6.0一致，清栈上限为0xFFFC </li>
+<li>栈的大小为0xFFFD时，retx指令不能使用<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/g8sP1aUCOmRSJHe.png"
+                      alt="image.png"
+                ></li>
+<li>栈的大小为0xFFFC时，retx指令可以使用<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/JfN5w64KRVze3Sk.png"
+                      alt="image.png"
+                ></li>
+</ul>
+</li>
+<li><p>gcc编译产生的结果与上述结果一致</p>
+<ul>
+<li>清栈大小为0xFFFD，无retx指令存在<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/QsSACWUZoF73RYG.png"
+                      alt="image.png"
+                ></li>
+<li>清栈大小为0xFFFC时，retx指令可以使用<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/TIHEyXVwkjLvJ85.png"
+                      alt="image.png"
+                ></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>由上述实验可以得知，retx指令的清栈上限为0xFFFC，若清栈大小超过该值，则无法使用retx指令清栈，而与猜想时的0xFFFF对比，少了3个字节，也许是因为32位下栈空间按照4字节对齐，因此传入参数占用的栈空间最大值应为0xFFFC。</li>
+</ul>
+<h3 id="3-2-超过上限后各编译器的处理方案"><a href="#3-2-超过上限后各编译器的处理方案" class="headerlink" title="3.2 超过上限后各编译器的处理方案"></a>3.2 超过上限后各编译器的处理方案</h3><p>由上述实验可知，retx对于传入参数占用的栈空间的清栈上限为0xFFFC。因此，我们通过设置结构体大小为0xFFFD以观察不同编译器对于x超出上限的处理方案</p>
+<ol>
+<li><p>VC 6.0</p>
+<ul>
+<li><p>在function函数内，VC将存在栈中的当前函数的ebp从栈中弹出后，使用ret 0进行返回，此处使用了retx指令，但由于x是0，因此没有对栈进行清理。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/1mvBq2VCtXk9pTu.png"
+                      alt="image.png"
+                ></p>
+</li>
+<li><p>而在调用者处，也没有相关的指令对传入参数所占用的栈空间进行清理，call指令后再无与function函数调用相关的指令操作。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/HZPFGS4TzeQxR3a.png"
+                      alt="image.png"
+                ></p>
+</li>
+<li><p>由此可见，VC6.0对于超出清栈上限并没有作处理，传入参数占用的栈空间从此不再使用，这将导致栈的溢出。</p>
+</li>
+<li><p>我们多次调用function函数，若VC6确实没作处理，则栈将会由于没有进行清栈而溢出。运行结果如下：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/QwryjaOKHXg7uY8.png"
+                      alt="image.png"
+                ></p>
+<ul>
+<li>由此可见，栈溢出发生，该情景在VC6下函数没有进行清栈操作。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>VS 2022</p>
+<ul>
+<li>我们在VS下复刻以上情景，可以看到，VS使用的编译器在函数内使用ret指令作为返回指令，而使用add指令直接在函数内清栈。</li>
+<li>比较巧妙的是，在将ebp从栈中弹出后，栈顶指向的内容应为返回地址。VS通过将返回地址从栈中弹出，将其存在ecx寄存器中，而后使用add修改esp的值达到清栈目的，接着再将ecx保存的返回地址重新压入栈内，以保证ret指令的正常运作。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/iUZWJM6nhOosDBv.png"
+                      alt="image.png"
+                ></li>
+<li>此处add指令的操作数为10000h，实则为传入参数大小值0xFFFD向上4字节对齐得到的结果。</li>
+</ul>
+</li>
+<li><p>gcc</p>
+<ul>
+<li>使用ida打开gcc生成的可执行文件，发现其处理方法与vs的处理方法相似——在返回之前把返回地址保存在寄存器ecx中，并使用add指令清栈。<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/plcGE1OzuXiVm3T.png"
+                      alt="image.png"
+                ></li>
+<li>但是，gcc将返回地址从栈中取出到寄存器ecx后不再压入栈中，而是直接使用jmp指令跳出函数。</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>由上述分析可以得出如下结论：</p>
+<ul>
+<li><p>VC6编译器在超出清栈上限后选择“摆烂”，不对传入参数占用的栈进行处理，调用前后的堆栈如下图所示：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/kvPuS3OsbHBdNZC.png"
+                      alt="image.png"
+                ><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/1H2Wa53vSswgBXh.png"
+                      alt="image.png"
+                ></p>
+</li>
+<li><p>VS所使用的编译器则将返回地址取出到ecx寄存器，而后使用add指令清栈，再将ecx寄存器保存的返回地址压入栈中，使用ret指令退出函数，堆栈变化过程如下：<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/h3NG6KbqXdoLFDe.png"
+                      alt="image.png"
+                ></p>
+</li>
+<li><p>而gcc采取的处理方式与VS相似，只不过使用jmp指令直接跳出函数，不需要将返回地址重新压栈，再调用ret指令，堆栈变化过程如下<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/01/01/GjvCXO5d1UZfS7r.png"
+                      alt="image.png"
+                ></p>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>紫辰工程组</category>
+      </categories>
+      <tags>
+        <tag>Complie</tag>
+        <tag>OS</tag>
+        <tag>Software</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>第一次长途骑行[200km+] 上篇</title>
+    <url>/2023/05/06/yaan-bike/</url>
+    <content><![CDATA[<blockquote>
+<p>如果你们有梦的话，Go forward，Run away –陶喆Soul Power演唱会《Runaway》开场白</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="Part1-彻底疯狂"><a href="#Part1-彻底疯狂" class="headerlink" title="Part1 彻底疯狂"></a>Part1 彻底疯狂</h1><p>&emsp;&emsp;从来没有试过长途骑行，趁着这次五一假期，让自己当初买下rc200公路车时对长途骑行的憧憬成为现实。出发前我们也算对此次旅途做了充足的准备，进行了一系列装备的购置和车辆的调整，狂妄的我们在设置路线的时候就已经“彻底疯狂”。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/WxShPTKp6nHqEzo.jpg"
+                      alt="2809096f8ba0efd4f20990ce8244cd7.jpg"
+                ></p>
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">图1.第一天目标行程</center>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/XMwRP1HFuJ28rdx.jpg"
+                      alt="ff32d4eab2b85ebc94747b55e32dbfc.jpg"
+                ></p>
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">图2.第二天目标行程</center>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/i9TLyS3rGhvEBw4.jpg"
+                      alt="8c5c1d25afb32f485203a57543618d6.jpg"
+                ></p>
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">图3.第三天目标行程</center>
+
+<p>&emsp;&emsp;越是临近出发就越是兴奋，连着看了一周的天气预报，祈祷着“不要下雨”“不要下雨”“不要下雨”。2023.4.29，我们四个人踩着四月的尾巴开始征程，用探索的姿态迎接五月的到来。</p>
+<h1 id="Part2-Hello，雅安"><a href="#Part2-Hello，雅安" class="headerlink" title="Part2 Hello，雅安"></a>Part2 Hello，雅安</h1><h2 id="出发成都西站"><a href="#出发成都西站" class="headerlink" title="出发成都西站"></a>出发成都西站</h2><p>&emsp;&emsp;我们第一天的行程是从学校出发，在成都西站乘坐动车到达雅安，而后进行长达80km的骑行到达泥巴山山脚。为了赶早上九点左右的动车，我们早上六点半就已经起床，从学校南门出校，正好遇上不错的天气。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/QFjfvsPXidY7bk2.jpg"
+                     
+                ></p>
+<p>&emsp;&emsp;然后在南门包子店吃了顿香香的早餐。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/CJ75jVwWtPnMAG4.jpg"
+                      alt="IMG_20230429_072918.jpg"
+                ></p>
+<p>&emsp;&emsp;吃过早餐后，从南门骑行到成都西站，全程11.6km，算是出发前的热身。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/69Bxr5qQHEkLMfK.jpg"
+                      alt="3aef97a9f974069653aacc6f43e27d1.jpg"
+                ></p>
+<p>&emsp;&emsp;一路上风景不错，在“行车记录仪“截了几张图。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/b8szglaZxSKXi2k.png"
+                      alt="image.png"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/KYcwxaAbP4k1r6E.png"
+                     
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/ltKuH9o6E2YrU37.png"
+                      alt="image.png"
+                ></p>
+<p>&emsp;&emsp;到达成都西站后，我们将车装进装车包里，乘上动车离开了成都。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/asLPCw8oyb9MN2j.png"
+                      alt="image.png"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/k7W6fwAEMGHs5Vm.jpg"
+                      alt="IMG_20230429_083611.jpg"
+                ><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/B2ks8IjgEtMovVP.jpg"
+                     
+                ></p>
+<h2 id="遇见雅安"><a href="#遇见雅安" class="headerlink" title="遇见雅安"></a>遇见雅安</h2><p>&emsp;&emsp;听说雅安的”雨“和”鱼“尤为出名，出发前还担心着第一天就雨骑，结果雅安给足了面子，送了个好天气。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/NxqHGb5TkWPiVMJ.jpg"
+                     
+                ><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/SY9Tu6XByV2GCFe.jpg"
+                      alt="IMG_20230429_105825.jpg"
+                ></p>
+<p>&emsp;&emsp;不幸的是rayy的tcr刚下车就爆了个胎，有点”出师不利“。</p>
+<p>&emsp;&emsp;正好已是午饭时间，我们找了家”雅安必吃店“尝了尝”雅鱼“。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/USm9FtyRvQr7x8a.jpg"
+                      alt="IMG_20230429_112103.jpg"
+                ></p>
+<p>&emsp;&emsp;味道确实不错，鱼肉又滑又嫩，就是有点越吃越麻。我们吃完的时候正好中午十二点多，店里来了不少人。<br>&emsp;&emsp;吃饱力足，立刻上路！我们穿越雅安市区，驶进G108国道，沿途风景不错，天气正好，全员干劲十足。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/dcbXgnjs1aWMwlB.jpg"
+                     
+                ></p>
+<p>&emsp;&emsp;当然，没过多久就被起伏路给干烂了。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/N9TcI3tYARrkpGD.jpg"
+                      alt="IMG_20230429_143401_1.jpg"
+                ></p>
+<p>&emsp;&emsp;出发前以为第一天是最轻松的，结果进入G108国道后，起伏路接连不断，所有放坡的后面都有一个上坡在等待。Rayy在第一天就赠与我们”辣堡“，遥遥领先。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/nKHRc59fXTdAZS6.jpg"
+                      alt="595d08b7e4fc977a8b789c6df4d5de9.jpg"
+                ></p>
+<p>&emsp;&emsp;当然，沿途的风景让我们觉得这段艰辛还算值得，一路上也遇到不少为我们加油的小车司机、摩托司机还有对向来的骑友，甚是感动。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/ar9OlWZszomJF3S.jpg"
+                      alt="IMG_20230429_145847.jpg"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/OAj8S9PrWbDwCmn.jpg"
+                      alt="IMG_20230429_163217.jpg"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/Aj5K3OSfazcPWdZ.jpg"
+                      alt="IMG_20230429_172957.jpg"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/hO7GJLQlviXwA5P.jpg"
+                      alt="IMG_20230429_173119.jpg"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/IhR1tmHDpgfyB2A.jpg"
+                      alt="IMG_20230429_173209.jpg"
+                ></p>
+<p>&emsp;&emsp;傍晚6点，我们到达了驻于泥巴山脚、名为”悦客之家“的客栈。店如其名，一进店我就有一种到家的感觉。老板和老板娘很热情，每一个需求都给我们满足，还用电暖给我们刚洗的骑行服烘干，并信誓旦旦地保证帮我们看好车。我们进行洗漱后在他们家自家开的饭店吃上了一顿不错的晚餐，感觉是我在四川吃过最好吃的排骨，饭店离客栈有几百米的路，老板很贴心地开车载我们往返。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/IF7RgW92Bn6yh1O.jpg"
+                      alt="IMG_20230429_205004.jpg"
+                ></p>
+<p>&emsp;&emsp;第一天的旅途顺利结束。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/9qXYGtp8xNABmHo.jpg"
+                      alt="df8bd2867df7e01d3bce54c747fef38.jpg"
+                ></p>
+<p>&emsp;&emsp;我们也立刻认清了完成原计划的困难，便紧急将第三天的行程缩短了80km。但是，后两天的行程并没有想象中那么如意，旅途充满未知，也许也是其本身的魅力。欲知后事如何，且听下回分解。</p>
+<p>&emsp;&emsp;上篇完。</p>
+<p>&emsp;&emsp;Xeno镇楼</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2023/05/06/hfnotGKwRVPNQbp.png"
+                      alt="image.png"
+                ></p>
+]]></content>
+      <categories>
+        <category>轻松愉快</category>
+      </categories>
+      <tags>
+        <tag>观察世界</tag>
+        <tag>游记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客公告栏</title>
+    <url>/2022/12/25/Helloworld/</url>
+    <content><![CDATA[<blockquote>
+<p>该文章用于发布近期公告；2023再见！</p>
+</blockquote>
+<span id="more"></span>
+<h1 id="🆙更新日志"><a href="#🆙更新日志" class="headerlink" title="🆙更新日志"></a>🆙更新日志</h1><table>
+<thead>
+<tr>
+<th>更新时间</th>
+<th>更新内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2023.12.26</td>
+<td>实习失败、保研失败、域名过期、备案过期，考研结束重建博客</td>
+</tr>
+<tr>
+<td>2023.1.1</td>
+<td>世界OS大版本更新，2023新年快乐！</td>
+</tr>
+<tr>
+<td>2022.12.25</td>
+<td>手残删除原博客源文件，重建blog</td>
+</tr>
+</tbody></table>
+<h1 id="🔆HelloWorld"><a href="#🔆HelloWorld" class="headerlink" title="🔆HelloWorld"></a>🔆HelloWorld</h1><p>传统艺能helloworld</p>
+]]></content>
+  </entry>
+</search>
