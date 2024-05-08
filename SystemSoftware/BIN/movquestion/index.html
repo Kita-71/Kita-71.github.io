@@ -22,7 +22,7 @@
     
     
       
-        <title>反汇编中的奇怪现象分析 - KITA Wiki Site</title>
+        <title>在内存中修改mov指令后不同反汇编器的反应 - KITA Wiki Site</title>
       
     
     
@@ -135,7 +135,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              反汇编中的奇怪现象分析
+              在内存中修改mov指令后不同反汇编器的反应
             
           </span>
         </div>
@@ -236,7 +236,7 @@
   
     
   
-  WIKI HOME
+  HOME
 
       </a>
     </li>
@@ -313,7 +313,7 @@
         
   
   <span class="md-ellipsis">
-    WIKI HOME
+    HOME
   </span>
   
 
@@ -446,18 +446,104 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    在内存中修改mov指令后不同反汇编器的反应
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    反汇编中的奇怪现象分析
+    在内存中修改mov指令后不同反汇编器的反应
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#一资料查询" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、资料查询
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#二猜测" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、猜测
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#三实验" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、实验
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、实验">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-vc60下的结果" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. VC6.0下的结果
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-vs2022下的结果" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. VS2022下的结果
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#附参考文献" class="md-nav__link">
+    <span class="md-ellipsis">
+      附：参考文献
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1144,8 +1230,74 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#一资料查询" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、资料查询
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#二猜测" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、猜测
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#三实验" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、实验
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、实验">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-vc60下的结果" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. VC6.0下的结果
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-vs2022下的结果" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. VS2022下的结果
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#附参考文献" class="md-nav__link">
+    <span class="md-ellipsis">
+      附：参考文献
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1160,6 +1312,8 @@
                   
 
 
+  <h1>在内存中修改mov指令后不同反汇编器的反应</h1>
+
 <blockquote>
 <p>在内存中修改mov指令后不同反汇编器的反应</p>
 </blockquote>
@@ -1168,7 +1322,7 @@
 <li>问题描述
     在Microsoft Visual C++，修改指令int gi = 0x0c所对应的内存空间中，第三个字节时，对应的反汇编指令mov dword ptr [地址], 0Ch没有改变。</li>
 </ul>
-<h1 id="一资料查询">一、资料查询<a class="headerlink" href="#一资料查询" title="Permanent link"></a></h1>
+<h2 id="一资料查询">一、资料查询<a class="headerlink" href="#一资料查询" title="Permanent link"></a></h2>
 <ol>
 <li>对应的mov指令的opcode解析
 <img alt="" src="https://s2.loli.net/2022/10/18/b1zOPRWla9jhXfc.png" /></li>
@@ -1183,17 +1337,17 @@
 <li>2-0位，寻址方式与字节首两位有关。
 <img alt="" src="https://s2.loli.net/2022/10/18/x6E4qHMSmAwycpb.png" /></li>
 </ol>
-<h1 id="二猜测">二、猜测<a class="headerlink" href="#二猜测" title="Permanent link"></a></h1>
+<h2 id="二猜测">二、猜测<a class="headerlink" href="#二猜测" title="Permanent link"></a></h2>
 <p>第二个字节用于规定指令中操作数的寻址方式。而以C7为首字节的MOV指令采用的是Memory寻址，与Register无关。故VC6.0反汇编器在反汇编时，直接忽视了第二个字节的中间三位。因此猜想，如果在VC6.0中将C7 05改成C7 45，结果将会发生变化，原因是这样做会导致指令第二个字节的前两位发生变化。</p>
-<h1 id="三实验">三、实验<a class="headerlink" href="#三实验" title="Permanent link"></a></h1>
-<h2 id="1-vc60下的结果">1. VC6.0下的结果<a class="headerlink" href="#1-vc60下的结果" title="Permanent link"></a></h2>
+<h2 id="三实验">三、实验<a class="headerlink" href="#三实验" title="Permanent link"></a></h2>
+<h3 id="1-vc60下的结果">1. VC6.0下的结果<a class="headerlink" href="#1-vc60下的结果" title="Permanent link"></a></h3>
 <p><img alt="" src="https://s2.loli.net/2022/10/18/limIXS5ATaqcQBM.png" />
 <img alt="" src="https://s2.loli.net/2022/10/18/cjBZ8xKqYo9OlbU.png" />
 <img alt="" src="https://s2.loli.net/2022/10/18/3jugKcQf1BoHVDp.png" />
 <img alt="" src="https://s2.loli.net/2022/10/18/uXROyjfDcvZeFiG.png" /><img alt="" src="https://s2.loli.net/2022/10/18/udX9oVsrEWn7hjM.png" /></p>
-<h2 id="2-vs2022下的结果">2. VS2022下的结果<a class="headerlink" href="#2-vs2022下的结果" title="Permanent link"></a></h2>
+<h3 id="2-vs2022下的结果">2. VS2022下的结果<a class="headerlink" href="#2-vs2022下的结果" title="Permanent link"></a></h3>
 <p>修改为C7 15后反汇编结果直接发生变化<img alt="" src="https://s2.loli.net/2022/10/18/pr9XOlaA61LHzqS.png" /></p>
-<h1 id="附参考文献">附：参考文献<a class="headerlink" href="#附参考文献" title="Permanent link"></a></h1>
+<h2 id="附参考文献">附：参考文献<a class="headerlink" href="#附参考文献" title="Permanent link"></a></h2>
 <ol>
 <li>Intel 80x86: http://www.mathemainzel.info/files/x86asmref.html</li>
 </ol>
@@ -1326,6 +1480,11 @@
       
     
     <script src="../../../assets/javascripts/custom.9458f965.min.js"></script>
+    <script 
+  async
+  defer
+  src="https://lzjmaxkb.cpolar.cn/api/application/embed?protocol=https&host=lzjmaxkb.cpolar.cn&token=e7ffe6cff21c10a1">
+  </script>
   
   </body>
 </html>

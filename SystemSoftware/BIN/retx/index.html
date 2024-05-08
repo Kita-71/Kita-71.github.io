@@ -236,7 +236,7 @@
   
     
   
-  WIKI HOME
+  HOME
 
       </a>
     </li>
@@ -313,7 +313,7 @@
         
   
   <span class="md-ellipsis">
-    WIKI HOME
+    HOME
   </span>
   
 
@@ -444,7 +444,7 @@
         
   
   <span class="md-ellipsis">
-    反汇编中的奇怪现象分析
+    在内存中修改mov指令后不同反汇编器的反应
   </span>
   
 
@@ -466,8 +466,6 @@
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
-      
-        
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
@@ -497,8 +495,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -507,6 +503,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#一ret-x指令格式分析" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、ret x指令格式分析
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、ret x指令格式分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#1-猜想" class="md-nav__link">
     <span class="md-ellipsis">
       1 猜想
@@ -514,8 +520,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#2-设计实验" class="md-nav__link">
     <span class="md-ellipsis">
       2 设计实验
@@ -523,13 +529,84 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#3-实验验证" class="md-nav__link">
     <span class="md-ellipsis">
       3 实验验证
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#二清栈上限及不同编译器的处理方案" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、清栈上限及不同编译器的处理方案
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、清栈上限及不同编译器的处理方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-猜想_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 猜想
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-设计实验_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 设计实验
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-实验验证_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 实验验证
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 实验验证">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-寻找清栈上限" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 寻找清栈上限
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-超过上限后各编译器的处理方案" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 超过上限后各编译器的处理方案
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1201,8 +1278,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1211,6 +1286,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#一ret-x指令格式分析" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、ret x指令格式分析
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、ret x指令格式分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#1-猜想" class="md-nav__link">
     <span class="md-ellipsis">
       1 猜想
@@ -1218,8 +1303,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#2-设计实验" class="md-nav__link">
     <span class="md-ellipsis">
       2 设计实验
@@ -1227,13 +1312,84 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#3-实验验证" class="md-nav__link">
     <span class="md-ellipsis">
       3 实验验证
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#二清栈上限及不同编译器的处理方案" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、清栈上限及不同编译器的处理方案
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、清栈上限及不同编译器的处理方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-猜想_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 猜想
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-设计实验_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 设计实验
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-实验验证_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 实验验证
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 实验验证">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-寻找清栈上限" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 寻找清栈上限
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-超过上限后各编译器的处理方案" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 超过上限后各编译器的处理方案
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1252,6 +1408,8 @@
                   
 
 
+  <h1>关于RET X指令</h1>
+
 <blockquote>
 <p>分析不同编译器下的ret x指令</p>
 </blockquote>
@@ -1266,12 +1424,12 @@
 </ul>
 </li>
 </ul>
-<h1 id="一ret-x指令格式分析">一、ret x指令格式分析<a class="headerlink" href="#一ret-x指令格式分析" title="Permanent link"></a></h1>
-<h2 id="1-猜想">1 猜想<a class="headerlink" href="#1-猜想" title="Permanent link"></a></h2>
+<h2 id="一ret-x指令格式分析">一、ret x指令格式分析<a class="headerlink" href="#一ret-x指令格式分析" title="Permanent link"></a></h2>
+<h3 id="1-猜想">1 猜想<a class="headerlink" href="#1-猜想" title="Permanent link"></a></h3>
 <ul>
 <li>retx指令将对传入参数占用的栈空间进行清楚的操作交由被调用者执行，因此只需要告知x的值（即需要清理的栈空间的大小），指令便能正常运作。因此猜测指令的格式为操作码op+源操作数x。</li>
 </ul>
-<h2 id="2-设计实验">2 设计实验<a class="headerlink" href="#2-设计实验" title="Permanent link"></a></h2>
+<h3 id="2-设计实验">2 设计实验<a class="headerlink" href="#2-设计实验" title="Permanent link"></a></h3>
 <ol>
 <li>
 <p>在C语言中，调用函数时对于不同传入参数的处理方式各不相同，对于结构体的传入采用参数拷贝的处理方式，而对于数组的传入则以传入指针的方式处理。因此，使用结构体作为参数传入，而结构体内部使用数组控制结构体的大小，以控制传入参数占用的栈空间大小，从而控制retx指令的清栈大小。在实际实验操作中，我们声明了一个结构体，其成员为一个char类型的数组。<img alt="image.png" src="https://s2.loli.net/2023/01/01/PXRWNKiyJQ3Vheg.png" /></p>
@@ -1282,7 +1440,7 @@
 <li>声明并定义函数function，传入的参数为test类型结构体，并添加__stdcall以采用被调用者清栈的函数调用约定，并对变量a进行相关操作以避免编译优化。<img alt="image.png" src="https://s2.loli.net/2023/01/01/OvZgsmbt2pKoQYy.png" /></li>
 <li>在main函数中初始化变量a，并作为参数传入函数function。<img alt="image.png" src="https://s2.loli.net/2023/01/01/AtsjgdOpCnWBVq9.png" /></li>
 </ol>
-<h2 id="3-实验验证">3 实验验证<a class="headerlink" href="#3-实验验证" title="Permanent link"></a></h2>
+<h3 id="3-实验验证">3 实验验证<a class="headerlink" href="#3-实验验证" title="Permanent link"></a></h3>
 <ol>
 <li>在function的return处下断点，观察其反汇编代码。<img alt="image.png" src="https://s2.loli.net/2023/01/01/BseUh8InL1YflW5.png" /></li>
 <li>发现其使用了retx指令，在指令中第二、三字节的内容与结构体的大小值的小端表示相匹配，因此可以认为这两个字节的值即为retx的x。<img alt="image.png" src="https://s2.loli.net/2023/01/01/z5yhdOgFsKc7Ze2.png" /></li>
@@ -1293,17 +1451,17 @@
 <p>至此可以认为，retx的指令由操作码+源操作数组成，操作码为C2，源操作数x为第二、三字节。</p>
 </li>
 </ol>
-<h1 id="二清栈上限及不同编译器的处理方案">二、清栈上限及不同编译器的处理方案<a class="headerlink" href="#二清栈上限及不同编译器的处理方案" title="Permanent link"></a></h1>
-<h2 id="1-猜想_1">1 猜想<a class="headerlink" href="#1-猜想_1" title="Permanent link"></a></h2>
+<h2 id="二清栈上限及不同编译器的处理方案">二、清栈上限及不同编译器的处理方案<a class="headerlink" href="#二清栈上限及不同编译器的处理方案" title="Permanent link"></a></h2>
+<h3 id="1-猜想_1">1 猜想<a class="headerlink" href="#1-猜想_1" title="Permanent link"></a></h3>
 <p>由retx指令格式可以作出猜测，x只能由大小为两个字节的无符号整数表示，因此猜测若该函数传入的参数占用栈空间的大小超过0xFFFF，retx指令将不能使用。同时，如果超过了该指令的清栈上限，不同编译器也许会作不同处理，接下来通过实验考究不同编译器的处理方案。</p>
-<h2 id="2-设计实验_1">2 设计实验<a class="headerlink" href="#2-设计实验_1" title="Permanent link"></a></h2>
+<h3 id="2-设计实验_1">2 设计实验<a class="headerlink" href="#2-设计实验_1" title="Permanent link"></a></h3>
 <ul>
 <li>使用上述代码进行实验。</li>
 <li>通过修改结构体内char数组的大小，控制清栈大小。</li>
 <li>使用不同编译器进行编译，比较超出上限和未超出上限的反汇编代码，找到清栈上限，并比较不同编译器的处理方案。</li>
 </ul>
-<h2 id="3-实验验证_1">3 实验验证<a class="headerlink" href="#3-实验验证_1" title="Permanent link"></a></h2>
-<h3 id="31-寻找清栈上限">3.1 寻找清栈上限<a class="headerlink" href="#31-寻找清栈上限" title="Permanent link"></a></h3>
+<h3 id="3-实验验证_1">3 实验验证<a class="headerlink" href="#3-实验验证_1" title="Permanent link"></a></h3>
+<h4 id="31-寻找清栈上限">3.1 寻找清栈上限<a class="headerlink" href="#31-寻找清栈上限" title="Permanent link"></a></h4>
 <ol>
 <li>
 <p>VC6.0</p>
@@ -1329,7 +1487,7 @@
 </li>
 <li>由上述实验可以得知，retx指令的清栈上限为0xFFFC，若清栈大小超过该值，则无法使用retx指令清栈，而与猜想时的0xFFFF对比，少了3个字节，也许是因为32位下栈空间按照4字节对齐，因此传入参数占用的栈空间最大值应为0xFFFC。</li>
 </ol>
-<h3 id="32-超过上限后各编译器的处理方案">3.2 超过上限后各编译器的处理方案<a class="headerlink" href="#32-超过上限后各编译器的处理方案" title="Permanent link"></a></h3>
+<h4 id="32-超过上限后各编译器的处理方案">3.2 超过上限后各编译器的处理方案<a class="headerlink" href="#32-超过上限后各编译器的处理方案" title="Permanent link"></a></h4>
 <p>由上述实验可知，retx对于传入参数占用的栈空间的清栈上限为0xFFFC。因此，我们通过设置结构体大小为0xFFFD以观察不同编译器对于x超出上限的处理方案
 1. VC 6.0
     - 在function函数内，VC将存在栈中的当前函数的ebp从栈中弹出后，使用ret 0进行返回，此处使用了retx指令，但由于x是0，因此没有对栈进行清理。<img alt="image.png" src="https://s2.loli.net/2023/01/01/1mvBq2VCtXk9pTu.png" />
@@ -1407,7 +1565,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../movquestion/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 反汇编中的奇怪现象分析">
+          <a href="../movquestion/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 在内存中修改mov指令后不同反汇编器的反应">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -1417,7 +1575,7 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                反汇编中的奇怪现象分析
+                在内存中修改mov指令后不同反汇编器的反应
               </div>
             </div>
           </a>
@@ -1496,6 +1654,11 @@
       
     
     <script src="../../../assets/javascripts/custom.9458f965.min.js"></script>
+    <script 
+  async
+  defer
+  src="https://lzjmaxkb.cpolar.cn/api/application/embed?protocol=https&host=lzjmaxkb.cpolar.cn&token=e7ffe6cff21c10a1">
+  </script>
   
   </body>
 </html>
