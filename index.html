@@ -289,7 +289,6 @@
       display: none;
     }
 
-
     /* Hero content - 调整为居中且适应屏幕尺寸 */
     .mdx-hero__content {
         position: relative; /* 改变定位关系 */
@@ -305,19 +304,47 @@
 
     /* 同样应用媒体查询来定制小屏幕上的表现 */
     @media (max-width: 768px) {
+      .mdx-hero__image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; /* 尝试调整这个值来更改在手机屏幕上的显示效果 */
+      background-image: url("/image/background.jpg");
+      background-size: cover;
+      background-position: center center; /* 使图片在任意屏幕尺寸都居中显示 */
+      background-clip: border-box; /* 确保背景被容器边界裁切 */
+      z-index: 0;
+  }
       /* 在这里调整小屏幕上的样式 */
       .mdx-hero__content {
+          margin-top: 50%;
           padding: 10px; /* 防止文本触碰到边缘 */
       }
     }
 
     /* 再添加一个媒体查询，专门处理更小的手机屏幕 */
     @media (max-width: 480px) {
+      .mdx-hero__image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; /* 尝试调整这个值来更改在手机屏幕上的显示效果 */
+      background-image: url("/image/background.jpg");
+      background-size: cover;
+      background-position: center center; /* 使图片在任意屏幕尺寸都居中显示 */
+      background-clip: border-box; /* 确保背景被容器边界裁切 */
+      z-index: 0;
+  }
       /* 针对手机屏幕的样式调整 */
       .mdx-hero__content {
         /* 可能需要进一步减少字号或者其他样式的调整 */
+        
+        margin-top: 50%;
       }
     }
+
     /* Hide table of contents */
     @media screen and (min-width: 60em) {
       .md-sidebar--secondary {
