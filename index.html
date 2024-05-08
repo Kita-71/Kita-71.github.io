@@ -391,7 +391,7 @@
         background-size: cover;
         background-position: center;
         background-clip: border-box; /* 确保背景被容器边界裁切 */
-        z-index: 0;
+        z-index: -1;
       }
     .site-description
     {
@@ -427,7 +427,12 @@
         </div>
         <!-- Hero image -->
         <div class="mdx-hero__image">
-         
+          <img
+            src="/image/background.jpg"
+            alt=""
+            width="100%"
+            draggable="true"
+          >
         </div>
       </div>
     </div>
