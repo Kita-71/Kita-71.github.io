@@ -321,6 +321,11 @@
           margin-top: 50%;
           padding: 10px; /* 防止文本触碰到边缘 */
       }
+      
+    .img_hide
+    {
+      display: none;
+    }
     }
 
     /* 再添加一个媒体查询，专门处理更小的手机屏幕 */
@@ -343,6 +348,11 @@
         
         margin-top: 50%;
       }
+      
+    .img_hide
+    {
+      display: none;
+    }
     }
 
     /* Hide table of contents */
@@ -379,7 +389,10 @@
       color: white; /* 设置颜色为白色 */
       font-size: 1.5rem; /* 设置字体大小 */
     }
-
+    .img_hide
+    {
+      display: block;
+    }
     .mdx-hero__image {
         position: absolute;
         top: -7%;
@@ -427,12 +440,14 @@
         </div>
         <!-- Hero image -->
         <div class="mdx-hero__image">
+          <div class="img_hide">
           <img
             src="/image/background.jpg"
             alt=""
             width="100%"
             draggable="true"
           >
+          </div>
         </div>
       </div>
     </div>
