@@ -2441,15 +2441,15 @@
 <p>支持度、置信度</p>
 <p><em>支持度：某个项集（A、B同时）出现的比例，</em>P(A∪B)</p>
 <p><em>置信度：A项出现时，B项出现的比例</em> P(B|A)=P(A∪B)/P(A)</p>
-<p><img alt="Untitled" src="docs/📚OtherNote/数据挖掘与大数据分析/Chapter-3-关联规则挖掘/Untitled.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/数据挖掘与大数据分析/Chapter-3-关联规则挖掘/Untitled%201.png" /></p>
+<p><img alt="Untitled" src="Untitled.png" /></p>
+<p><img alt="Untitled" src="Untitled%201.png" /></p>
 </li>
 <li>
 <p>关联规则挖掘的步骤：频繁项集产生→规则产生</p>
 <ul>
 <li>
 <p><em>Brute-force</em></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/数据挖掘与大数据分析/Chapter-3-关联规则挖掘/Untitled%202.png" /></p>
+<p><img alt="Untitled" src="Untitled%202.png" /></p>
 </li>
 </ul>
 </li>
@@ -2476,13 +2476,13 @@
 <li>
 <p>剪枝原理</p>
 <p>基于支持度的剪枝：一个项集的支持度不会大于其子集的支持度，即支持度度量的反单调性。</p>
-<p><img alt="Untitled" src="docs/📚OtherNote/数据挖掘与大数据分析/Chapter-3-关联规则挖掘/Untitled%203.png" /></p>
+<p><img alt="Untitled" src="Untitled%203.png" /></p>
 </li>
 </ol>
 <h3 id="2-apriori算法流程">2. Apriori算法流程<a class="headerlink" href="#2-apriori算法流程" title="Permanent link"></a></h3>
-<p><img alt="Untitled" src="docs/📚OtherNote/数据挖掘与大数据分析/Chapter-3-关联规则挖掘/Untitled%204.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/数据挖掘与大数据分析/Chapter-3-关联规则挖掘/Untitled%205.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/数据挖掘与大数据分析/Chapter-3-关联规则挖掘/Untitled%206.png" /></p>
+<p><img alt="Untitled" src="Untitled%204.png" /></p>
+<p><img alt="Untitled" src="Untitled%205.png" /></p>
+<p><img alt="Untitled" src="Untitled%206.png" /></p>
 <h3 id="3-apriori改进策略">3. Apriori改进策略<a class="headerlink" href="#3-apriori改进策略" title="Permanent link"></a></h3>
 <h4 id="31-计算复杂性">3.1 计算复杂性<a class="headerlink" href="#31-计算复杂性" title="Permanent link"></a></h4>
 <ol>
@@ -2501,8 +2501,8 @@
 <li>
 <p>Hash-based itemset counting（散列项集计数)</p>
 <p>一个其hash桶计数小于阈值的k项集不可能是频繁的</p>
-<p><img alt="Untitled" src="docs/📚OtherNote/数据挖掘与大数据分析/Chapter-3-关联规则挖掘/Untitled%207.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/数据挖掘与大数据分析/Chapter-3-关联规则挖掘/Untitled%208.png" /></p>
+<p><img alt="Untitled" src="Untitled%207.png" /></p>
+<p><img alt="Untitled" src="Untitled%208.png" /></p>
 </li>
 <li>
 <p>Transaction reduction（事务压缩）</p>
@@ -2511,7 +2511,7 @@
 <li>
 <p>Partitioning（划分）</p>
 <p>找出局部频繁→得出全局频繁</p>
-<p><img alt="Untitled" src="docs/📚OtherNote/数据挖掘与大数据分析/Chapter-3-关联规则挖掘/Untitled%209.png" /></p>
+<p><img alt="Untitled" src="Untitled%209.png" /></p>
 </li>
 <li>
 <p>Sampling（采样/抽样）</p>
@@ -2528,7 +2528,7 @@
 </ul>
 <h3 id="2流程">2.流程<a class="headerlink" href="#2流程" title="Permanent link"></a></h3>
 <p>条件模式基→条件FP树→挖取频繁项集 （单路径）</p>
-<p><img alt="Untitled" src="docs/📚OtherNote/数据挖掘与大数据分析/Chapter-3-关联规则挖掘/Untitled%2010.png" /></p>
+<p><img alt="Untitled" src="Untitled%2010.png" /></p>
 <h3 id="3-优缺点">3. 优缺点<a class="headerlink" href="#3-优缺点" title="Permanent link"></a></h3>
 <ul>
 <li>优点：效率比Apriori高</li>
@@ -2545,9 +2545,9 @@
 <p>挖掘“有趣”的规则，强规则不一定是有趣的，甚至是误导的</p>
 </li>
 </ol>
-<p><img alt="Untitled" src="docs/📚OtherNote/数据挖掘与大数据分析/Chapter-3-关联规则挖掘/Untitled%2011.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/数据挖掘与大数据分析/Chapter-3-关联规则挖掘/Untitled%2012.png" /></p>
-<p><img alt="这里的支持度为后件的支持度" src="docs/📚OtherNote/数据挖掘与大数据分析/Chapter-3-关联规则挖掘/Untitled%2013.png" /></p>
+<p><img alt="Untitled" src="Untitled%2011.png" /></p>
+<p><img alt="Untitled" src="Untitled%2012.png" /></p>
+<p><img alt="这里的支持度为后件的支持度" src="Untitled%2013.png" /></p>
 <p>这里的支持度为后件的支持度</p>
 
 
