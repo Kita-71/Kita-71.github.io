@@ -3061,7 +3061,7 @@
 <li>显示设备上用于窗口映射的坐标区域→视区/视口</li>
 <li>窗口→视口：观察变换</li>
 </ul>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Trasfomation/Untitled%201.png" /></p>
+<p><img alt="Untitled" src="../Trasfomation/Untitled%201.png" /></p>
 <h4 id="wc-to-vc">WC-TO-VC<a class="headerlink" href="#wc-to-vc" title="Permanent link"></a></h4>
 <ul>
 <li>平移使观察坐标系原点和世界坐标系原点重合</li>
@@ -3072,19 +3072,19 @@
 <li>平移使VC原点和WC原点重合</li>
 <li>
 <p>旋转使坐标系的坐标轴重合</p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%201.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%201.png" /></p>
 </li>
 </ul>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%202.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%203.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%204.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%202.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%203.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%204.png" /></p>
 <h2 id="clipping">Clipping<a class="headerlink" href="#clipping" title="Permanent link"></a></h2>
 <blockquote>
 <p>识别图形在指定区域内或外的过程
 </p>
 </blockquote>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%205.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%205.png" /></p>
 <ul>
 <li>点裁剪（略）</li>
 <li>直线裁剪</li>
@@ -3103,8 +3103,8 @@ LB vs CS:LB效率高于CS，减少了交点计算次数，参数u1，u2的更新
 <p>测试直线端点和边界的位置判断是否需要求交点
 </p>
 </blockquote>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%206.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%207.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%206.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%207.png" /></p>
 <ul>
 <li>计算直线端点编码<ul>
 <li>c1和c2均为0000，保留直线</li>
@@ -3119,47 +3119,47 @@ LB vs CS:LB效率高于CS，减少了交点计算次数，参数u1，u2的更新
 <p>基于直线段参数方程分析的快速直线裁剪算法，相对于CS减少了计算次数
 </p>
 </blockquote>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%208.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%209.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2010.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2011.png" /></p>
-<p><img alt="此处对u1u2都进行运算，求出两个端点值" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2012.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%208.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%209.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2010.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2011.png" /></p>
+<p><img alt="此处对u1u2都进行运算，求出两个端点值" src="../Viewing/Untitled%2012.png" /></p>
 <p>此处对u1u2都进行运算，求出两个端点值</p>
 <h4 id="nicholl-lee-nicholl算法nln">Nicholl-Lee-Nicholl算法（NLN）<a class="headerlink" href="#nicholl-lee-nicholl算法nln" title="Permanent link"></a></h4>
 <blockquote>
 <p>通过在裁剪窗口周围创立多个区域，并在求交运算之前进行更多的区域测试，从而避免对直线段的多次裁剪，仅仅适用于2D裁剪
 </p>
 </blockquote>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2013.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2014.png" /></p>
-<p><img alt="P1位于内部，设定四个裁剪区域，P2位于窗口内部，P1P2保留，位于窗口外部则求交点并保留P1P" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2015.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2013.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2014.png" /></p>
+<p><img alt="P1位于内部，设定四个裁剪区域，P2位于窗口内部，P1P2保留，位于窗口外部则求交点并保留P1P" src="../Viewing/Untitled%2015.png" /></p>
 <p>P1位于内部，设定四个裁剪区域，P2位于窗口内部，P1P2保留，位于窗口外部则求交点并保留P1P</p>
-<p><img alt="P1位于窗口左侧：P2在L区域求和左边界保留P1P位于LT，计算直线与窗口左边界/上边界的交点并保留该线段部分...." src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2016.png" /></p>
+<p><img alt="P1位于窗口左侧：P2在L区域求和左边界保留P1P位于LT，计算直线与窗口左边界/上边界的交点并保留该线段部分...." src="../Viewing/Untitled%2016.png" /></p>
 <p>P1位于窗口左侧：P2在L区域求和左边界保留P1P位于LT，计算直线与窗口左边界/上边界的交点并保留该线段部分....</p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2017.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2018.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2017.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2018.png" /></p>
 <h3 id="多边形区域裁剪">多边形区域裁剪<a class="headerlink" href="#多边形区域裁剪" title="Permanent link"></a></h3>
 <h4 id="sutherland-hodgman算法">Sutherland-Hodgman算法<a class="headerlink" href="#sutherland-hodgman算法" title="Permanent link"></a></h4>
 <blockquote>
 <p>以多边形顶点为初始集合，首先左边界裁剪，产生新的顶点序列，然后依次右/下/上，最终输出顶点序列（左→右→下→上）
 </p>
 </blockquote>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2019.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2020.png" /></p>
-<p><img alt="case1：输出i和p" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2021.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2019.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2020.png" /></p>
+<p><img alt="case1：输出i和p" src="../Viewing/Untitled%2021.png" /></p>
 <p>case1：输出i和p</p>
-<p><img alt="case2：输出s和p" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2022.png" /></p>
+<p><img alt="case2：输出s和p" src="../Viewing/Untitled%2022.png" /></p>
 <p>case2：输出s和p</p>
-<p><img alt="case3：输出i和s" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2023.png" /></p>
+<p><img alt="case3：输出i和s" src="../Viewing/Untitled%2023.png" /></p>
 <p>case3：输出i和s</p>
-<p><img alt="case4：无输出" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2024.png" /></p>
+<p><img alt="case4：无输出" src="../Viewing/Untitled%2024.png" /></p>
 <p>case4：无输出</p>
 <ul>
 <li>不可以直接用CS裁剪：丢失边界部分</li>
 <li>用于凸多边形裁剪：处理凹多边形时产生多余线段</li>
 <li>算法改进：窗口的四个边界都确定一个点时才加入到输出顶点表中</li>
 </ul>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2025.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2025.png" /></p>
 <h4 id="weiler-atherton算法">Weiler-Atherton算法<a class="headerlink" href="#weiler-atherton算法" title="Permanent link"></a></h4>
 <blockquote>
 <p>通过修改多边形顶点处理顺序，从而正确显示凹多边形：
@@ -3168,7 +3168,7 @@ LB vs CS:LB效率高于CS，减少了交点计算次数，参数u1，u2的更新
 回到交点并继续按原顺序处理多边形的边
 </p>
 </blockquote>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2026.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2026.png" /></p>
 <p>p270/p279</p>
 <h3 id="文本裁剪">文本裁剪<a class="headerlink" href="#文本裁剪" title="Permanent link"></a></h3>
 <h4 id="字符分类">字符分类<a class="headerlink" href="#字符分类" title="Permanent link"></a></h4>
@@ -3177,22 +3177,22 @@ LB vs CS:LB效率高于CS，减少了交点计算次数，参数u1，u2的更新
 <li>矢量字符</li>
 </ul>
 <h4 id="全无或者全有字符串裁剪">全无或者全有字符串裁剪<a class="headerlink" href="#全无或者全有字符串裁剪" title="Permanent link"></a></h4>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2027.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2027.png" /></p>
 <h4 id="全有或全无字符裁剪">全有或全无字符裁剪<a class="headerlink" href="#全有或全无字符裁剪" title="Permanent link"></a></h4>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2028.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2028.png" /></p>
 <h4 id="单字符裁剪">单字符裁剪<a class="headerlink" href="#单字符裁剪" title="Permanent link"></a></h4>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2029.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2029.png" /></p>
 <hr />
 <hr />
 <h2 id="三维观察">三维观察<a class="headerlink" href="#三维观察" title="Permanent link"></a></h2>
 <h3 id="概述">概述<a class="headerlink" href="#概述" title="Permanent link"></a></h3>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2030.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2031.png" /></p>
-<p><img alt="Depth Cuing 近亮远暗" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2032.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2030.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2031.png" /></p>
+<p><img alt="Depth Cuing 近亮远暗" src="../Viewing/Untitled%2032.png" /></p>
 <p>Depth Cuing 近亮远暗</p>
 <h3 id="3d观察流水线">3D观察流水线<a class="headerlink" href="#3d观察流水线" title="Permanent link"></a></h3>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2033.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2034.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2033.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2034.png" /></p>
 <h3 id="3d观察坐标系">3D观察坐标系<a class="headerlink" href="#3d观察坐标系" title="Permanent link"></a></h3>
 <h4 id="观察坐标系的建立">观察坐标系的建立<a class="headerlink" href="#观察坐标系的建立" title="Permanent link"></a></h4>
 <ul>
@@ -3201,23 +3201,23 @@ LB vs CS:LB效率高于CS，减少了交点计算次数，参数u1，u2的更新
 <li>指定观察向上向量（不和N平行）</li>
 <li>用叉乘确定其余坐标轴</li>
 </ul>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2035.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2035.png" /></p>
 <p>作用：用于指定观察者的观察位置及投影平面的参考系</p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2036.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2037.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2036.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2037.png" /></p>
 <h4 id="世界坐标系观察坐标系">世界坐标系→观察坐标系<a class="headerlink" href="#世界坐标系观察坐标系" title="Permanent link"></a></h4>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2038.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2038.png" /></p>
 <h3 id="3d-projection-transformation">3D Projection Transformation<a class="headerlink" href="#3d-projection-transformation" title="Permanent link"></a></h3>
-<p><img alt="平行投影和透视投影" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2039.png" /></p>
+<p><img alt="平行投影和透视投影" src="../Viewing/Untitled%2039.png" /></p>
 <p>平行投影和透视投影</p>
-<p><img alt="平行投影的正投影和斜投影" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2040.png" /></p>
+<p><img alt="平行投影的正投影和斜投影" src="../Viewing/Untitled%2040.png" /></p>
 <p>平行投影的正投影和斜投影</p>
 <h4 id="正投影">正投影<a class="headerlink" href="#正投影" title="Permanent link"></a></h4>
-<p><img alt="正三面投影：三视图，投影平面法向量和三坐标轴之一平行" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2041.png" /></p>
+<p><img alt="正三面投影：三视图，投影平面法向量和三坐标轴之一平行" src="../Viewing/Untitled%2041.png" /></p>
 <p>正三面投影：三视图，投影平面法向量和三坐标轴之一平行</p>
-<p><img alt="轴测正投影：显示物体的多个平面" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2042.png" /></p>
+<p><img alt="轴测正投影：显示物体的多个平面" src="../Viewing/Untitled%2042.png" /></p>
 <p>轴测正投影：显示物体的多个平面</p>
-<p><img alt="等轴测投影：投影平面与每个坐标轴的交点距坐标原点的距离相等" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2043.png" /></p>
+<p><img alt="等轴测投影：投影平面与每个坐标轴的交点距坐标原点的距离相等" src="../Viewing/Untitled%2043.png" /></p>
 <p>等轴测投影：投影平面与每个坐标轴的交点距坐标原点的距离相等</p>
 <h4 id="斜投影">斜投影<a class="headerlink" href="#斜投影" title="Permanent link"></a></h4>
 <ul>
@@ -3225,18 +3225,18 @@ LB vs CS:LB效率高于CS，减少了交点计算次数，参数u1，u2的更新
 <li>斜二测投影：tanα=2——垂直于投影平面的线条投影后得到一半的长度</li>
 </ul>
 <h4 id="投影变换矩阵斜投影">投影变换矩阵（斜投影?）<a class="headerlink" href="#投影变换矩阵斜投影" title="Permanent link"></a></h4>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2044.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2045.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2046.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2047.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2044.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2045.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2046.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2047.png" /></p>
 <h4 id="透视投影">透视投影<a class="headerlink" href="#透视投影" title="Permanent link"></a></h4>
 <ul>
 <li>投影中心COP——也叫投影参考点PRP</li>
 <li>投影平面——也叫观察平面VP</li>
 <li>投影线——也叫视线（从投影中心发出的，是不平行的）</li>
 </ul>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2048.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2049.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2048.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2049.png" /></p>
 <ul>
 <li>透视投影的类型：<ul>
 <li>灭点：3D物体的一组平行线投影后收敛于一点</li>
@@ -3245,40 +3245,40 @@ LB vs CS:LB效率高于CS，减少了交点计算次数，参数u1，u2的更新
 </ul>
 </li>
 </ul>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2050.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2051.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2052.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2050.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2051.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2052.png" /></p>
 <h3 id="3d-观察体3d-view-volume">3D 观察体（3D View Volume）<a class="headerlink" href="#3d-观察体3d-view-volume" title="Permanent link"></a></h3>
 <ul>
 <li>观察体：3D场景选取窗口/3D裁剪窗口</li>
 <li>作用:对三维物体进行裁剪，只有在观察体内的物体才会被投影到投影平面上显示出来</li>
 <li>投影窗口：投影平面上的矩阵选景窗口</li>
 </ul>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2053.png" /></p>
-<p><img alt="无穷平行管道" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2054.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2053.png" /></p>
+<p><img alt="无穷平行管道" src="../Viewing/Untitled%2054.png" /></p>
 <p>无穷平行管道</p>
-<p><img alt="棱锥" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2055.png" /></p>
+<p><img alt="棱锥" src="../Viewing/Untitled%2055.png" /></p>
 <p>棱锥</p>
-<p><img alt="矩形平行六面体" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2056.png" /></p>
+<p><img alt="矩形平行六面体" src="../Viewing/Untitled%2056.png" /></p>
 <p>矩形平行六面体</p>
-<p><img alt="棱台" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2057.png" /></p>
+<p><img alt="棱台" src="../Viewing/Untitled%2057.png" /></p>
 <p>棱台</p>
-<p><img alt="斜的" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2058.png" /></p>
+<p><img alt="斜的" src="../Viewing/Untitled%2058.png" /></p>
 <p>斜的</p>
 <h3 id="3d-clipping">3D Clipping<a class="headerlink" href="#3d-clipping" title="Permanent link"></a></h3>
 <ul>
 <li>裁剪窗口是六面体</li>
 </ul>
 <h4 id="平面方程裁剪">平面方程裁剪<a class="headerlink" href="#平面方程裁剪" title="Permanent link"></a></h4>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2059.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2060.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2059.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2060.png" /></p>
 <h4 id="编码裁剪cs算法">编码裁剪（CS算法）<a class="headerlink" href="#编码裁剪cs算法" title="Permanent link"></a></h4>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2061.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2062.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2061.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2062.png" /></p>
 <h4 id="参数方程裁剪">参数方程裁剪<a class="headerlink" href="#参数方程裁剪" title="Permanent link"></a></h4>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2063.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2064.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2065.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2063.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2064.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2065.png" /></p>
 <p><img alt="Untitled" src="Untitled%2066.png" /></p>
 <hr />
 <h2 id="可见面的判断">可见面的判断<a class="headerlink" href="#可见面的判断" title="Permanent link"></a></h2>
@@ -3363,8 +3363,8 @@ A的含义：
 </ul>
 <h4 id="scan-line-method不作要求">Scan-Line Method(不作要求)<a class="headerlink" href="#scan-line-method不作要求" title="Permanent link"></a></h4>
 <p><img alt="Untitled" src="Untitled%2076.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2077.png" /></p>
-<p><img alt="Untitled" src="docs/📚OtherNote/计算机图形学/Viewing/Untitled%2078.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2077.png" /></p>
+<p><img alt="Untitled" src="../Viewing/Untitled%2078.png" /></p>
 
 
 
