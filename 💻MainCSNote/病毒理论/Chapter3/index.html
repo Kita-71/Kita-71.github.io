@@ -2517,15 +2517,15 @@
 <h1 id="第三章-文件系统">第三章 文件系统<a class="headerlink" href="#第三章-文件系统" title="Permanent link"></a></h1>
 <h2 id="fat12">FAT12<a class="headerlink" href="#fat12" title="Permanent link"></a></h2>
 <h3 id="fat12格式">FAT12格式<a class="headerlink" href="#fat12格式" title="Permanent link"></a></h3>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2028.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2028.png" />)</p>
 <h3 id="文件存储方式">文件存储方式<a class="headerlink" href="#文件存储方式" title="Permanent link"></a></h3>
 <ul>
 <li>按扇区存储，通过链表组织</li>
 <li>结束标志AA55，改成其他值还可以正常工作</li>
 <li>引导记录格式</li>
 </ul>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2029.png" />)</p>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2030.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2029.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2030.png" />)</p>
 <ul>
 <li>结束标志好像对于dos没有什么用</li>
 <li>介质描述符：修改之后盘无效了</li>
@@ -2542,12 +2542,12 @@
 </ul>
 </li>
 </ul>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2031.png" />)</p>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2032.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2031.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2032.png" />)</p>
 <ol>
 <li>如何找到文件</li>
 </ol>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2033.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2033.png" />)</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2584,54 +2584,54 @@
 <p>主要区别在于fat表项不是12bits而是16bits组成，即2字节
 </p>
 </blockquote>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2034.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2034.png" />)</p>
 <h2 id="fat-32">FAT 32<a class="headerlink" href="#fat-32" title="Permanent link"></a></h2>
 <ul>
 <li>出于FAT16不支持大分区、单位簇容量大以至于空间急剧浪费等缺点设计的</li>
 </ul>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2035.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2035.png" />)</p>
 <ul>
 <li>取消根文件目录区</li>
 <li>数据区起始扇区计算</li>
 </ul>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2036.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2036.png" />)</p>
 <h3 id="目录项">目录项<a class="headerlink" href="#目录项" title="Permanent link"></a></h3>
 <ul>
 <li>Fat32为每个登录的名字都会分配一个短文件名目录项，其中包括了首簇号，文件大小等基本属性。除了短名目录项，还会分配一个目录项（但第一个字节用e5删除表示，但它不是表示删除，而是没有生效的长名项）。如果该项不够存名字，还会再分配一个长名目录项</li>
 </ul>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2037.png" />)</p>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2038.png" />)</p>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2039.png" />)</p>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2040.png" />)</p>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2041.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2037.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2038.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2039.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2040.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2041.png" />)</p>
 <h2 id="硬盘数据结构">硬盘数据结构<a class="headerlink" href="#硬盘数据结构" title="Permanent link"></a></h2>
 <p>分区划分以柱面为单位，一个柱面不能属于两个分区。</p>
 <h3 id="分区记录表">分区记录表<a class="headerlink" href="#分区记录表" title="Permanent link"></a></h3>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2042.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2042.png" />)</p>
 <h3 id="主引导记录">主引导记录<a class="headerlink" href="#主引导记录" title="Permanent link"></a></h3>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2043.png" />)</p>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2044.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2043.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2044.png" />)</p>
 <h3 id="找到特定分区">找到特定分区<a class="headerlink" href="#找到特定分区" title="Permanent link"></a></h3>
 <ul>
 <li>头部有jmp eb</li>
 <li>尾部有结束符55aa</li>
 </ul>
 <h3 id="扩展分区">扩展分区<a class="headerlink" href="#扩展分区" title="Permanent link"></a></h3>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2045.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2045.png" />)</p>
 <ul>
 <li>偏移相对于MBR或EBR</li>
 <li>引导扇区的主引导记录为全0</li>
 <li>只有最后一个分区项能够指向EBR，其余分区项都直接指向盘区</li>
 </ul>
 <h2 id="硬盘引导过程">硬盘引导过程<a class="headerlink" href="#硬盘引导过程" title="Permanent link"></a></h2>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2046.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2046.png" />)</p>
 <ul>
 <li>操作系统相关的引导代码在其分区的引导扇区（即激活分区）</li>
 <li>硬盘可以引导多系统。要引导多系统必须用专门的引导程序替换MBR，这样替换后的代码执行时可让用户选择启动那个分区</li>
 <li>在之前的实验中，C盘，即第一个主分区是系统盘，扮演的激活分区。下面看之前查到的MBR中的第一条分区表项。第一个字节正是0x80.而第2个记录的第一字节就是0，非激活。</li>
 <li>7C00处的代码来自于主引导扇区MBR</li>
 </ul>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2047.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2047.png" />)</p>
 <ol>
 <li>Bios自检、初始化，然后控制交给MBR</li>
 <li>MBR找激活分区（或者叫活动分区，即哪个分区装了操作系统）</li>
@@ -2646,7 +2646,7 @@
 <ul>
 <li>会将自己的代码拷贝到600h执行</li>
 </ul>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2048.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2048.png" />)</p>
 <ul>
 <li>操作系统的boot在7C00h中执行</li>
 <li>从61dh开始的代码，用于解析分区表项<ul>
@@ -2659,14 +2659,14 @@
 </li>
 </ul>
 <h2 id="引导制作">引导制作<a class="headerlink" href="#引导制作" title="Permanent link"></a></h2>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2049.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2049.png" />)</p>
 <h2 id="有趣的发现省流">有趣的发现省流<a class="headerlink" href="#有趣的发现省流" title="Permanent link"></a></h2>
 <ul>
 <li>MBR的引导代码将激活分区表项首址用si传递给激活分区的引导代码</li>
 <li>但，激活分区的引导代码并没用它，而是用分区时写入的隐藏扇区定位出自己的起始位置。但也因此激活分区只能是主分区（隐藏扇区只能定位出到EBR的偏移，而只有MBR因其就在硬盘开始，所以可知其基址，其它EBR的基址除了从MBR分区表开始推，别无它法）。</li>
 </ul>
 <h2 id="硬盘逻辑锁">硬盘逻辑锁<a class="headerlink" href="#硬盘逻辑锁" title="Permanent link"></a></h2>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2050.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2050.png" />)</p>
 <ul>
 <li>直接将MBR第二项指向自己，无法生效</li>
 <li>将EBR的第一项破坏，生效</li>
@@ -2676,15 +2676,15 @@
 <li>？总扇区数（前一个分区找到之后，通过该项就能找到下一个分区），但是结果貌似是和他无关</li>
 <li>起始磁头号、扇区号、柱面号</li>
 </ul>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2051.png" />)</p>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2052.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2051.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2052.png" />)</p>
 </li>
 <li>
 <p>系统防止逻辑锁的方式：判断逻辑盘的个数，超过多少个就结束。</p>
 </li>
 <li>所有分区的描述信息都是同一个</li>
 </ul>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2053.png" />)</p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2053.png" />)</p>
 
 
 

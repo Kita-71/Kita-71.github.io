@@ -2402,22 +2402,22 @@
 
 <h1 id="第四章-dos下的病毒">第四章 dos下的病毒<a class="headerlink" href="#第四章-dos下的病毒" title="Permanent link"></a></h1>
 <h2 id="实模式">实模式<a class="headerlink" href="#实模式" title="Permanent link"></a></h2>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2054.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2054.png" /></p>
 <h2 id="debug">debug<a class="headerlink" href="#debug" title="Permanent link"></a></h2>
 <aside>
 🤔 验证CS:IP是下一条将执行的指令
 
-![Untitled](docs/💻MainCSNote/病毒理论/病毒/Untitled%2055.png)
+![Untitled](病毒/Untitled%2055.png)
 
 </aside>
 
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2056.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2056.png" /></p>
 <h2 id="com格式">com格式<a class="headerlink" href="#com格式" title="Permanent link"></a></h2>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2057.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2057.png" /></p>
 <h2 id="寄生">寄生<a class="headerlink" href="#寄生" title="Permanent link"></a></h2>
 <h3 id="头寄生">头寄生<a class="headerlink" href="#头寄生" title="Permanent link"></a></h3>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2058.png" /></p>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2059.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2058.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2059.png" /></p>
 <ul>
 <li>直接Virus+Normal会导致Virus ret后停止</li>
 <li>
@@ -2430,25 +2430,25 @@
 </blockquote>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>![Untitled](docs/💻MainCSNote/病毒理论/病毒/Untitled%2060.png)
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>![Untitled](病毒/Untitled%2060.png)
 
-![Untitled](docs/💻MainCSNote/病毒理论/病毒/Untitled%2061.png)
+![Untitled](病毒/Untitled%2061.png)
 </code></pre></div></td></tr></table></div>
 <ul>
 <li>解决方法：构造jmp</li>
 <li>构造jmp后，发现没打印成功</li>
 </ul>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2062.png" /></p>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2063.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2062.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2063.png" /></p>
 <ul>
 <li>原因：省流，normal没有重定位</li>
 <li>
 <p>解决方法：virus运行后把normal拷贝到100h</p>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2064.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2064.png" /></p>
 </li>
 <li>
 <p>结果</p>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2065.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2065.png" /></p>
 </li>
 </ul>
 </li>
@@ -2538,7 +2538,7 @@
 <li>将被感染文件首簇存目录项保留段</li>
 <li>
 <p>修改首簇号指向病毒的首簇，同时被感染文件的大小修改为病毒的真实大小。</p>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2077.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2077.png" /></p>
 </li>
 </ul>
 </li>
@@ -2546,7 +2546,7 @@
 <p>Getexe获取执行文件名：</p>
 </li>
 </ul>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2078.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2078.png" /></p>
 <ul>
 <li>GetInfectedSector获取被感染文件原扇区号的函数</li>
 <li>FindRootDirEntry在根目录获取指定文件名的目录项</li>
@@ -2560,11 +2560,11 @@
 </ul>
 </li>
 </ul>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2079.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2079.png" /></p>
 <ul>
 <li>
 <p>中断向量表</p>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2080.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2080.png" /></p>
 <ul>
 <li>不少中断处理程序来自一个段</li>
 <li>中断处理程序：根据表项定位地址</li>
@@ -2574,7 +2574,7 @@
 </li>
 </ul>
 <h3 id="感染">感染<a class="headerlink" href="#感染" title="Permanent link"></a></h3>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2081.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2081.png" /></p>
 <h3 id="驻留式中断向量修改">驻留式中断向量修改<a class="headerlink" href="#驻留式中断向量修改" title="Permanent link"></a></h3>
 <ul>
 <li>使用dos系统提供的终端调用</li>

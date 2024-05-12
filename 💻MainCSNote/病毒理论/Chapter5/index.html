@@ -2486,13 +2486,13 @@
 <li>对于程序的加载：不同模块加载地址不同，需要有地方存储约定的加载地址</li>
 </ul>
 <h2 id="pe格式">PE格式<a class="headerlink" href="#pe格式" title="Permanent link"></a></h2>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2082.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2082.png" /></p>
 <ul>
 <li>RVA:加载后相对于整个PE文件首部的偏移量<ul>
 <li>和文件偏移不同，是加载后在内存中的偏移</li>
 <li>
 <p>有的段可能相同有的段可能不同</p>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2083.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2083.png" /></p>
 </li>
 </ul>
 </li>
@@ -2533,7 +2533,7 @@
 </li>
 <li>
 <p>需要返回原程序</p>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2084.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2084.png" /></p>
 </li>
 </ol>
 <h2 id="修改入口点的问题">修改入口点的问题<a class="headerlink" href="#修改入口点的问题" title="Permanent link"></a></h2>
@@ -2545,11 +2545,11 @@
 <ol>
 <li>
 <p>感染代码段</p>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2085.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2085.png" /></p>
 </li>
 <li>
 <p>不修改入口点，将入口点第一行代码替换为jmp指令</p>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2086.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2086.png" /></p>
 <ul>
 <li>实际操作过程中<ul>
 <li>可能遇到内存权限问题</li>
@@ -2580,8 +2580,8 @@
 <li>函数名表-函数地址索引表-函数地址表</li>
 <li>PE格式的函数名表是函数指针表，存着函数名的首地址RVA</li>
 </ul>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2087.png" /></p>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2088.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2087.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2088.png" /></p>
 </li>
 </ul>
 </li>
@@ -2597,17 +2597,17 @@
 <ul>
 <li>函数调用采用call相对偏移进行</li>
 </ul>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2089.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2089.png" /></p>
 <h3 id="导入表-iat">导入表 IAT<a class="headerlink" href="#导入表-iat" title="Permanent link"></a></h3>
 <ul>
 <li>NT头部→Import Description Table→Import Description→dll name、int table RVA和IAT table RVA</li>
 </ul>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2090.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2090.png" /></p>
 <ul>
 <li>INT ：Import Name Table</li>
 <li>IAT：Import Address Table</li>
 </ul>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2091.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2091.png" /></p>
 <h3 id="绑定导入预先绑定">绑定导入（预先绑定）<a class="headerlink" href="#绑定导入预先绑定" title="Permanent link"></a></h3>
 <p><a href="https://blog.csdn.net/weixin_37673331/article/details/104584969">PE结构（四） 绑定导入表_吾乃花花的博客-CSDN博客</a></p>
 <ul>
@@ -2634,7 +2634,7 @@
 <ul>
 <li>让原导入表全部指向病毒开始，而新造一个导入表项，让系统将导入函数填写到该处。这样就能保证程序正常执行</li>
 </ul>
-<p><img alt="Untitled" src="docs/💻MainCSNote/病毒理论/病毒/Untitled%2092.png" /></p>
+<p><img alt="Untitled" src="../%E7%97%85%E6%AF%92/Untitled%2092.png" /></p>
 <h2 id="rtl表感染">RTL表感染<a class="headerlink" href="#rtl表感染" title="Permanent link"></a></h2>
 <ul>
 <li>RTL是程序的运行时库，比如printf就是运行时库的一部分。</li>
