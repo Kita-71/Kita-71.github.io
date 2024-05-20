@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "vite": "^5.2.11",
+    "vitepress": "^1.2.0"
+  },
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "dependencies": {
+    "@iminu/vitepress-plugin-auto-sidebar": "^1.0.3"
+  }
+}
