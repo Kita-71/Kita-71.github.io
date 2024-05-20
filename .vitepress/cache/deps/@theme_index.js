@@ -9,32 +9,32 @@ import {
 } from "./chunk-JWA4H7QR.js";
 
 // node_modules/vitepress/dist/client/theme-default/index.js
-import "G:/Vite/node_modules/vitepress/dist/client/theme-default/styles/fonts.css";
+import "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/styles/fonts.css";
 
 // node_modules/vitepress/dist/client/theme-default/without-fonts.js
-import "G:/Vite/node_modules/vitepress/dist/client/theme-default/styles/vars.css";
-import "G:/Vite/node_modules/vitepress/dist/client/theme-default/styles/base.css";
-import "G:/Vite/node_modules/vitepress/dist/client/theme-default/styles/icons.css";
-import "G:/Vite/node_modules/vitepress/dist/client/theme-default/styles/utils.css";
-import "G:/Vite/node_modules/vitepress/dist/client/theme-default/styles/components/custom-block.css";
-import "G:/Vite/node_modules/vitepress/dist/client/theme-default/styles/components/vp-code.css";
-import "G:/Vite/node_modules/vitepress/dist/client/theme-default/styles/components/vp-code-group.css";
-import "G:/Vite/node_modules/vitepress/dist/client/theme-default/styles/components/vp-doc.css";
-import "G:/Vite/node_modules/vitepress/dist/client/theme-default/styles/components/vp-sponsor.css";
-import VPBadge from "G:/Vite/node_modules/vitepress/dist/client/theme-default/components/VPBadge.vue";
-import Layout from "G:/Vite/node_modules/vitepress/dist/client/theme-default/Layout.vue";
-import { default as default2 } from "G:/Vite/node_modules/vitepress/dist/client/theme-default/components/VPBadge.vue";
-import { default as default3 } from "G:/Vite/node_modules/vitepress/dist/client/theme-default/components/VPImage.vue";
-import { default as default4 } from "G:/Vite/node_modules/vitepress/dist/client/theme-default/components/VPButton.vue";
-import { default as default5 } from "G:/Vite/node_modules/vitepress/dist/client/theme-default/components/VPHomeHero.vue";
-import { default as default6 } from "G:/Vite/node_modules/vitepress/dist/client/theme-default/components/VPHomeFeatures.vue";
-import { default as default7 } from "G:/Vite/node_modules/vitepress/dist/client/theme-default/components/VPHomeSponsors.vue";
-import { default as default8 } from "G:/Vite/node_modules/vitepress/dist/client/theme-default/components/VPDocAsideSponsors.vue";
-import { default as default9 } from "G:/Vite/node_modules/vitepress/dist/client/theme-default/components/VPSponsors.vue";
-import { default as default10 } from "G:/Vite/node_modules/vitepress/dist/client/theme-default/components/VPTeamPage.vue";
-import { default as default11 } from "G:/Vite/node_modules/vitepress/dist/client/theme-default/components/VPTeamPageTitle.vue";
-import { default as default12 } from "G:/Vite/node_modules/vitepress/dist/client/theme-default/components/VPTeamPageSection.vue";
-import { default as default13 } from "G:/Vite/node_modules/vitepress/dist/client/theme-default/components/VPTeamMembers.vue";
+import "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/styles/vars.css";
+import "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/styles/base.css";
+import "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/styles/icons.css";
+import "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/styles/utils.css";
+import "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/styles/components/custom-block.css";
+import "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/styles/components/vp-code.css";
+import "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/styles/components/vp-code-group.css";
+import "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/styles/components/vp-doc.css";
+import "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/styles/components/vp-sponsor.css";
+import VPBadge from "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/components/VPBadge.vue";
+import Layout from "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/Layout.vue";
+import { default as default2 } from "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/components/VPBadge.vue";
+import { default as default3 } from "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/components/VPImage.vue";
+import { default as default4 } from "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/components/VPButton.vue";
+import { default as default5 } from "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/components/VPHomeHero.vue";
+import { default as default6 } from "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/components/VPHomeFeatures.vue";
+import { default as default7 } from "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/components/VPHomeSponsors.vue";
+import { default as default8 } from "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/components/VPDocAsideSponsors.vue";
+import { default as default9 } from "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/components/VPSponsors.vue";
+import { default as default10 } from "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/components/VPTeamPage.vue";
+import { default as default11 } from "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/components/VPTeamPageTitle.vue";
+import { default as default12 } from "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/components/VPTeamPageSection.vue";
+import { default as default13 } from "G:/Docu/Kita-71.github.io/node_modules/vitepress/dist/client/theme-default/components/VPTeamMembers.vue";
 
 // node_modules/vitepress/dist/client/theme-default/support/utils.js
 import { withBase } from "vitepress";
